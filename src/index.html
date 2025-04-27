@@ -1,64 +1,75 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
+  <title>AirNest</title>
 </head>
 
-<body class="h-screen">
-  <!--Nav-->
-  <div class="flex items-center justify-between px-5 pt-05 ">
-    <div class="">
+<body class="min-h-screen">
+
+
+  <div class="flex items-center justify-between px-5 py-5">
+    <div class="text-xl font-bold">
       <a href="#">AirNest</a>
     </div>
-    <nav class="">
-      <ul class="flex sm:gap-6">
-        <li><a class=" px-5 py-2 " href="#">Add Tickets</a></li>
-        <li><a class="border-2 rounded-5xl border-blue-400 p-1  m-0.5 gap-2" href="#">Cart</a></li>
+    <nav>
+      <ul class="flex gap-4 sm:gap-6">
+        <li><a class="px-4 py-2 hover:underline" href="#">Add Tickets</a></li>
+        <li><a class="border-2 rounded-full border-blue-400 px-4 py-2 hover:bg-blue-100" href="#">Cart</a></li>
       </ul>
     </nav>
   </div>
-<!--Hero-->
-  <div class="flex justify-between">
-    <div class="">
-      <h2 class="text-9xl md:text-6xl font-extrabold leading-tight mb-4">
+
+  <div class="flex flex-col lg:flex-row items-center justify-between p-5">
+    <div class="max-w-2xl">
+      <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
         Where Your Journey<br><span class="text-gray-700">Takes Flight</span>
       </h2>
-      <p class="text-sm leading-6 w-lg h-28">
+      <p class="text-base leading-6 mb-6">
         Step into a world where every flight is the start of a story. Whether you’re chasing sunsets, exploring hidden
         towns, or reuniting with loved ones, let us help you find the perfect journey—full of wonder, comfort, and a
         touch of magic.
       </p>
-      <div class="flex flex-col w-xl border-2 p-4 ">
-        <div class="flex justify-between items-center text-center">
-          <div>From</div>
-          <div>To</div>
+      <!--Box-->
+      <div class="flex flex-col gap-4 border-2 rounded-lg p-4">
+        <div class="flex flex-col sm:flex-row justify-between gap-4 text-center">
+          <div class="flex-1 border p-2 rounded-md">From</div>
+          <div class="flex-1 border p-2 rounded-md">To</div>
         </div>
-        <div class="flex items-center justify-around text-center">
-          <div>Departure</div>
-          <div>Return</div>
-          <div>Travelers</div>
+        <div class="flex flex-col sm:flex-row justify-between gap-4 text-center">
+          <div class="flex-1 border p-2 rounded-md">Departure</div>
+          <div class="flex-1 border p-2 rounded-md">Return</div>
+          <div class="flex-1 border p-2 rounded-md">Travelers</div>
         </div>
       </div>
     </div>
     <div>
-      <img src="#" alt="AirPlane" srcset="">
+      <img src="#" alt="AirPlane">
     </div>
   </div>
-<!--Box-->
-  <div class="w-full p-2 m-2">
-    <h1>Flights For You</h1>
-    <div class="grid ">
-      <div class="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, molestiae.</div>
-      <div class=""></div>
-      <div class=""></div>
-      <div class=""></div>
-      <div class=""></div>
-      <div class=""></div>
+
+
+  <div class="w-full p-5">
+    <h1 class="text-2xl font-bold mb-4">Flights For You</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">1</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">1</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">1</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">1</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">1</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">1</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">2</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">2</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">2</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">2</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">2</div>
+      <div class="bg-amber-300 rounded-lg shadow-xl p-4 text-center">2</div>
     </div>
   </div>
+
 </body>
 
 </html>
