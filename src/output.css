@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.4 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -7,30 +8,23 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-blue-400: oklch(70.7% 0.165 254.624);
-    --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-gray-700: oklch(37.3% 0.034 259.733);
-    --color-white: #fff;
+    --color-neutral-700: oklch(37.1% 0 0);
     --spacing: 0.25rem;
     --container-lg: 32rem;
     --container-2xl: 42rem;
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
-    --text-6xl: 3.75rem;
-    --text-6xl--line-height: 1;
-    --text-9xl: 8rem;
-    --text-9xl--line-height: 1;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
+    --tracking-tighter: -0.05em;
     --leading-tight: 1.25;
-    --radius-xs: 0.125rem;
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -184,14 +178,8 @@
   .m-2 {
     margin: calc(var(--spacing) * 2);
   }
-  .m-6 {
-    margin: calc(var(--spacing) * 6);
-  }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
-  }
-  .mb-5 {
-    margin-bottom: calc(var(--spacing) * 5);
   }
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
@@ -211,17 +199,11 @@
   .h-screen {
     height: 100vh;
   }
-  .min-h-screen {
-    min-height: 100vh;
-  }
   .w-1 {
     width: calc(var(--spacing) * 1);
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
-  }
-  .w-2xl {
-    width: var(--container-2xl);
   }
   .w-full {
     width: 100%;
@@ -253,11 +235,11 @@
   .justify-between {
     justify-content: space-between;
   }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
-  }
-  .rounded-full {
-    border-radius: calc(infinity * 1px);
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
@@ -265,26 +247,13 @@
   .rounded-md {
     border-radius: var(--radius-md);
   }
-  .rounded-xl {
-    border-radius: var(--radius-xl);
-  }
-  .rounded-xs {
-    border-radius: var(--radius-xs);
-  }
   .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
-  .border-1 {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
-  }
-  .border-blue-400 {
-    border-color: var(--color-blue-400);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -304,14 +273,14 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
-  .py-4 {
-    padding-block: calc(var(--spacing) * 4);
-  }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
   }
   .text-center {
     text-align: center;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -321,21 +290,8 @@
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
   }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
   .text-\[14vh\] {
     font-size: 14vh;
-  }
-  .text-\[16vh\] {
-    font-size: 16vh;
-  }
-  .text-\[16vw\] {
-    font-size: 16vw;
-  }
-  .text-\[18vh\] {
-    font-size: 18vh;
   }
   .leading-6 {
     --tw-leading: calc(var(--spacing) * 6);
@@ -353,20 +309,29 @@
     --tw-font-weight: var(--font-weight-extrabold);
     font-weight: var(--font-weight-extrabold);
   }
-  .text-\[9xlxl\] {
-    color: 9xlxl;
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
   }
-  .text-\[16\] {
-    color: 16;
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
+  .tracking-tighter {
+    --tw-tracking: var(--tracking-tighter);
+    letter-spacing: var(--tracking-tighter);
   }
   .text-gray-700 {
     color: var(--color-gray-700);
   }
+  .text-neutral-700 {
+    color: var(--color-neutral-700);
+  }
   .underline {
     text-decoration-line: underline;
   }
-  .shadow-lg {
-    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  .shadow-2xs {
+    --tw-shadow: 0 1px var(--tw-shadow-color, rgb(0 0 0 / 0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-xl {
@@ -377,38 +342,8 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
-  .hover\:bg-blue-600 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-600);
-      }
-    }
-  }
-  .hover\:text-white {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-white);
-      }
-    }
-  }
   .sm\:flex-row {
     @media (width >= 40rem) {
-      flex-direction: row;
-    }
-  }
-  .sm\:gap-6 {
-    @media (width >= 40rem) {
-      gap: calc(var(--spacing) * 6);
-    }
-  }
-  .md\:text-6xl {
-    @media (width >= 48rem) {
-      font-size: var(--text-6xl);
-      line-height: var(--tw-leading, var(--text-6xl--line-height));
-    }
-  }
-  .lg\:flex-row {
-    @media (width >= 64rem) {
       flex-direction: row;
     }
   }
@@ -423,6 +358,10 @@
   inherits: false;
 }
 @property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
@@ -502,6 +441,7 @@
       --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;
+      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
