@@ -11,7 +11,7 @@
 <body class=" overflow-x-hidden overflow-y-auto h-screen w-screen ">
   <header class="container mx-auto">
     <nav class=" w-full flex flex-wrap justify-between items-center px-6 py-5">
-      <a href="#" class="text-2xl font-normal text-neutral-950 leading-6 tracking-[-0.48px] font-rubik">AirNest</a>
+      <a href="#" class="text-2xl font-normal text-neutral-950 leading-[100%] tracking-[-0.48px] font-rubik">AirNest</a>
       <div class="space-x-2 mt-2">
         <a class="font-semibold tracking-[-0.32px]" href="#">Add Ticket</a>
         <a class="px-4 py-1 border-2 rounded-lg font-medium tracking-[-0.36px] shadow-2xs" href="#">Cart</a>
@@ -23,7 +23,7 @@
   <div class="container mx-auto">
     <div class="grid grid-cols-2 gap-3 p-4 m5">
       <div class="z-10 space-y-10">
-        <h1 class="leading-[100%] text-[120px] font-rubik font-normal tracking-[100%] text-neutral-700 text-nowrap">
+        <h1 class="leading-[100%] text-[120px] font-rubik font-normal text-neutral-700 text-nowrap">
           Where Your Journey <br class=""> Takes Flight
         </h1>
         <p class=" w-[544px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
@@ -113,7 +113,7 @@
                 <h1 class="font-normal text-neutral-500">Travelers</h1>
               </div>
               <form class="mx-auto">
-                <select id="from" class="font-medium">
+                <select id="from" class="font-medium ">
                   <option selected>Select Travelers</option>
                   <option value="travelers">1 Person</option>
                   <option value="travelers">2 Person</option>
@@ -126,26 +126,82 @@
         </div>
       </div>
       <div>
-        <div class=" left-0 -z-10 flex justify-center items-center">
+        <div class=" -z-10 flex justify-center items-center">
           <img src="/src/assets/plane.png" alt="">
         </div>
       </div>
     </div>
 
 
-
-    <div class="container p-5">
+    <div class="container">
       <h1 class="font-rubik text-neutral-950 text-2xl font-normal mb-2">Flights For You</h1>
-      <div class="grid grid-cols-2">
-        <div class="border border-dashed border-red-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur placeat quos atque numquam, sint amet
-          reprehenderit facere cumque odit. Maxime!
+      <div class="flex flex-col gap-5">
+        <div class="grid grid-cols-6 gap-3 items-center bg-white border border-dashed shadow-md p-4 rounded-2xl mt-4 ">
+          <div class="col-span-1 ">
+            <div class="flex items-center ">
+              <div class="font-semibold">Biman Bangladesh</div>
+              <div class="text-xs text-gray-500 px-2 py-0.5 rounded">Domestic</div>
+            </div>
+          </div>
+          <div class="col-span-1 text-center">
+            <div class="text-lg font-bold">----</div>
+            <div class="text-sm text-gray-500">----</div>
+          </div>
+          <div class="col-span-2 text-center">
+            <div class="text-sm text-gray-500">----</div>
+            <div class="border-t border-gray-300 w-full my-1"></div>
+            <div class="text-sm text-gray-500">----</div>
+          </div>
+          <div class="col-span-1 text-center">
+            <div class="text-lg font-bold">----</div>
+            <div class="text-sm text-gray-500">----</div>
+          </div>
+          <div class="col-span-1 text-center">
+            <div class="flex justify-center items-center">
+              <div class="flex flex-col">
+                <div class=" font-bold text-neutral-900">BDT 4,797</div>
+                <div class=" line-through text-gray-400">BDT 5,390</div>
+              </div>
+              <div>
+                <button class="px-5 py-3 bg-black text-white text-sm rounded">Add To Cart</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="border border-dashed border-blue-800"></div>
-
+        <div class="grid grid-cols-6 items-center bg-white border border-dashed shadow-md p-4 rounded-2xl ">
+          <div class="col-span-1">
+            <div class="flex items-center">
+              <div class="font-semibold">Biman Bangladesh</div>
+              <div class="text-xs text-gray-500 px-2 py-0.5 rounded">Domestic</div>
+            </div>
+          </div>
+          <div class="col-span-1 text-center">
+            <div class="text-lg font-bold">----</div>
+            <div class="text-sm text-gray-500">----</div>
+          </div>
+          <div class="col-span-2 text-center">
+            <div class="text-sm text-gray-500">----</div>
+            <div class="border-t border-gray-300 w-full my-1"></div>
+            <div class="text-sm text-gray-500">----</div>
+          </div>
+          <div class="col-span-1 text-center">
+            <div class="text-lg font-bold">----</div>
+            <div class="text-sm text-gray-500">----</div>
+          </div>
+          <div class="col-span-1 text-center">
+            <div class="flex justify-center items-center">
+              <div class="flex flex-col">
+                <div class=" font-bold text-neutral-900">BDT 4,797</div>
+                <div class=" line-through text-gray-400">BDT 5,390</div>
+              </div>
+              <div>
+                <button class="px-5 py-3 bg-black text-white text-sm rounded">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
 </body>
 
 </html>
