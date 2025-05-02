@@ -13,8 +13,10 @@
     <nav class=" w-full flex flex-wrap justify-between items-center px-6 py-5">
       <a href="#" class="text-2xl font-normal text-neutral-950 leading-[100%] tracking-[-0.48px] font-rubik">AirNest</a>
       <div class="space-x-2 mt-2">
-        <a class="font-semibold tracking-[-0.32px]" href="#">Add Ticket</a>
-        <a class="px-4 py-1 border-2 rounded-lg font-medium tracking-[-0.36px] shadow-2xs" href="#">Cart</a>
+        <button onclick="document.getElementById('modal').classList.remove('hidden')"">
+          <a class=" font-semibold tracking-[-0.32px]" href="#">Add Ticket</a>
+        </button>
+        <a class="px-4 py-1 border-2 rounded-lg font-medium tracking-[-0.36px] shadow-2xs" href="cart.html">Cart</a>
       </div>
     </nav>
   </header>
@@ -165,7 +167,7 @@
             </div>
           </div>
         </div>
-        <div class="border-2 border-dashed border-neutral-400 rounded-2xl h-full p-10">
+        <div class="border-2 border-dashed border-neutral-400 rounded-2xl h-full -ml-[2px] p-10">
           <div class="flex justify-center gap-4 items-center">
             <div class="flex flex-col">
               <div class="font-bold text-neutral-900">BDT 4,797</div>
@@ -179,6 +181,83 @@
         </div>
       </div>
     </div>
+
+
+    <!-- Modal Section -->
+    <!-- Overlay -->
+    <div id="modal" class=" hidden fixed inset-0 flex bg-black justify-center items-center z-10 rounded-xl ">
+      <div class="w-[400px] h-[500px]">
+        <div class=" border-2 border-dashed rounded-2xl bg-white  p-5">
+          <h1 class="p-2">New Ticket</h1>
+          <form class="space-y-4">
+            <div>
+              <input type="text" class="w-full border rounded p-2" placeholder="Airline Name" />
+            </div>
+            <div>
+              <label class="block font-medium"></label>
+              <select class="w-full text-neutral-500 border rounded p-2" aria-placeholder="Airline Type">
+                <option selected>Airline Type</option>
+                <option>Business</option>
+                <option>Business</option>
+              </select>
+            </div>
+            <div class="flex gap-2">
+              <div class="flex-1">
+                <input type="text" class="w-full border rounded p-2" placeholder="Form" />
+              </div>
+              <div class="flex-1">
+                <input type="text" class="w-full border rounded p-2" placeholder="To" />
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <div class="flex-1">
+                <input type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Departure Date " />
+              </div>
+              <div class="flex-1">
+                <input type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Return Date"
+                  placeholder="Return Date" />
+              </div>
+            </div>
+            <div>
+              <input type="number" class="w-full border rounded p-2" placeholder="Stapes" />
+            </div>
+            <div class="flex gap-2">
+              <div class="flex-1">
+                <input type="text" class="w-full border rounded p-2" placeholder="Regular Price" />
+              </div>
+              <div class="flex-1">
+                <input type="text" class="w-full border rounded p-2" placeholder="Discount Price" />
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 space-y-1">
+              <div class="flex justify-between">
+                <div class="">
+                  <div>Flight Time</div>
+                  <div>Steps Time</div>
+                  <div>Total Flight Time</div>
+                </div>
+                <div>
+                  <div>-----</div>
+                  <div>-----</div>
+                  <div>--</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="flex justify-between mt-4 gap-2">
+              <button onclick="document.getElementById('modal').classList.add('hidden')"">
+                  <a class=" flex-1 bg-black text-white rounded px-5 py-3 font-semibold " href=" #">Cancel</a>
+              </button>
+              <button type="submit">
+                <a class=" flex-1 bg-black text-white rounded px-5 py-3" href="">Add Ticket</a>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
 </body>
 
 </html>
