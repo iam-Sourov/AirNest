@@ -1,5 +1,19 @@
+fetch("http://localhost:3000/user")
+    .then(res => res.json())
+    .then(json =>{
+        json.map(data =>{
+          cardBody.append(card(data));
+        })
+    })
 
-function card(airline, type, ) {
+
+
+let cardBody = document.getElementById('card');
+
+
+
+
+function card({airline, type}) {
     let innerCard = document.createElement('div');
     innerCard.innerHTML = `<div class="grid grid-cols-[2fr_1fr] ">
         <div class=" flex justify-between border-2 border-neutral-400 border-dashed rounded-2xl  p-10 ">
@@ -11,8 +25,8 @@ function card(airline, type, ) {
           </div>
           <div class=" items-center">
             <div class="flex flex-col text-center">
-              <div class="text-lg font-bold">----</div>
-              <div class="text-sm text-gray-500">----</div>
+              <div class="text-lg font-bold"></div>
+              <div class="text-sm text-gray-500"></div>
             </div>
           </div>
           <div class="flex">
@@ -36,27 +50,17 @@ function card(airline, type, ) {
         <div class="border-2 border-dashed border-neutral-400 rounded-2xl h-full -ml-[2px] p-10">
           <div class="flex justify-center gap-4 items-center">
             <div class="flex flex-col">
-              <div class="font-bold text-neutral-900">${price.current}</div>
-              <div class=" line-through text-gray-400">BDT 5,390</div>
+              <div class="font-bold text-neutral-900">zzzz</div>
+              <div class=" line-through text-gray-400"></div>
             </div>
             <div class="flex ">
               <button class="p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
             </div>
-
           </div>
         </div>
       </div>`;
     return innerCard
 }
-let cardBody = document.getElementById('card');
-cardBody.appendChild(card());
 
 
 
-fetch("http://localhost:3000/user")
-    .then(res => res.json())
-    .then(json =>{
-        json.map(data =>{
-            cardBody.appendChild(card(data.airline, data.type, ));
-        })
-    })
