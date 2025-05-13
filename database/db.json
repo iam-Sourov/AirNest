@@ -1,0 +1,436 @@
+{
+  "user": [
+    { "id": "1",
+      "airline": "Biman Bangladesh",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Cox's Bazar",
+          "code": "CXB"
+        }
+      },
+      "departureTime": "2025-04-25T19:30",
+      "arrivalTime": "2025-04-25T20:35",
+      "return": "2025-05-25T20:00",
+      "stops": 0,
+      "travelers": 2,
+      "price": {
+        "current": 4797,
+        "original": 5390,
+        "currency": "BDT"
+      }
+    },
+    { "id": "2",
+      "airline": "Emirates",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Dubai",
+          "code": "DXB"
+        }
+      },
+      "departureTime": "2025-04-28T01:30",
+      "arrivalTime": "2025-04-28T05:10",
+      "return": "2025-05-05T21:30",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 82000,
+        "original": 91000,
+        "currency": "BDT"
+      }
+    },
+    { "id": "3",
+      "airline": "Novoair",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Jessore",
+          "code": "JSR"
+        }
+      },
+      "departureTime": "2025-04-27T07:45",
+      "arrivalTime": "2025-04-27T08:25",
+      "return": "2025-05-03T11:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 3000,
+        "original": 3600,
+        "currency": "BDT"
+      }
+    },
+    { "id": "4",
+      "airline": "Singapore Airlines",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Singapore",
+          "code": "SIN"
+        }
+      },
+      "departureTime": "2025-04-30T23:55",
+      "arrivalTime": "2025-05-01T06:10",
+      "return": "2025-05-10T23:00",
+      "stops": 0,
+      "travelers": 2,
+      "price": {
+        "current": 72000,
+        "original": 79900,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "US-Bangla Airlines",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Sylhet",
+          "code": "ZYL"
+        }
+      },
+      "departureTime": "2025-05-01T14:30",
+      "arrivalTime": "2025-05-01T15:15",
+      "return": "2025-05-07T17:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 3200,
+        "original": 3700,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Qatar Airways",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "London",
+          "code": "LHR"
+        }
+      },
+      "departureTime": "2025-05-01T10:00",
+      "arrivalTime": "2025-05-01T20:15",
+      "return": "2025-05-15T18:00",
+      "stops": 1,
+      "travelers": 1,
+      "price": {
+        "current": 142000,
+        "original": 155000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Biman Bangladesh",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Sylhet",
+          "code": "ZYL"
+        },
+        "to": {
+          "city": "Dhaka",
+          "code": "DAC"
+        }
+      },
+      "departureTime": "2025-04-29T18:00",
+      "arrivalTime": "2025-04-29T18:45",
+      "return": "2025-05-06T20:00",
+      "stops": 0,
+      "travelers": 2,
+      "price": {
+        "current": 3100,
+        "original": 3700,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Turkish Airlines",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Istanbul",
+          "code": "IST"
+        }
+      },
+      "departureTime": "2025-04-27T04:20",
+      "arrivalTime": "2025-04-27T10:55",
+      "return": "2025-05-12T08:15",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 98000,
+        "original": 105000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Air Arabia",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Sharjah",
+          "code": "SHJ"
+        }
+      },
+      "departureTime": "2025-05-02T03:30",
+      "arrivalTime": "2025-05-02T07:15",
+      "return": "2025-05-09T04:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 65000,
+        "original": 72000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Novoair",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Saidpur",
+          "code": "SPD"
+        },
+        "to": {
+          "city": "Dhaka",
+          "code": "DAC"
+        }
+      },
+      "departureTime": "2025-04-30T09:30",
+      "arrivalTime": "2025-04-30T10:20",
+      "return": "2025-05-06T10:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 3300,
+        "original": 3800,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Etihad Airways",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Abu Dhabi",
+          "code": "AUH"
+        }
+      },
+      "departureTime": "2025-05-03T22:00",
+      "arrivalTime": "2025-05-04T02:45",
+      "return": "2025-05-12T22:30",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 79000,
+        "original": 87000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Fly Dubai",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Dubai",
+          "code": "DXB"
+        }
+      },
+      "departureTime": "2025-04-29T02:30",
+      "arrivalTime": "2025-04-29T06:30",
+      "return": "2025-05-06T23:55",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 69000,
+        "original": 77000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "US-Bangla Airlines",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Chittagong",
+          "code": "CGP"
+        }
+      },
+      "departureTime": "2025-04-26T08:15",
+      "arrivalTime": "2025-04-26T09:00",
+      "return": "2025-05-02T18:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 3500,
+        "original": 4200,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Malaysia Airlines",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Kuala Lumpur",
+          "code": "KUL"
+        }
+      },
+      "departureTime": "2025-05-04T02:20",
+      "arrivalTime": "2025-05-04T08:15",
+      "return": "2025-05-11T00:20",
+      "stops": 0,
+      "travelers": 2,
+      "price": {
+        "current": 74000,
+        "original": 83000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Air India",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Delhi",
+          "code": "DEL"
+        }
+      },
+      "departureTime": "2025-05-06T06:00",
+      "arrivalTime": "2025-05-06T08:45",
+      "return": "2025-05-12T07:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 45000,
+        "original": 51000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "IndiGo",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Kolkata",
+          "code": "CCU"
+        }
+      },
+      "departureTime": "2025-04-30T13:00",
+      "arrivalTime": "2025-04-30T13:50",
+      "return": "2025-05-03T14:30",
+      "stops": 0,
+      "travelers": 2,
+      "price": {
+        "current": 18000,
+        "original": 21000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Thai Airways",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Bangkok",
+          "code": "BKK"
+        }
+      },
+      "departureTime": "2025-04-28T23:10",
+      "arrivalTime": "2025-04-29T02:40",
+      "return": "2025-05-06T03:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 56000,
+        "original": 61000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "airline": "Air Astra",
+      "type": "Domestic",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DAC"
+        },
+        "to": {
+          "city": "Saidpur",
+          "code": "SPD"
+        }
+      },
+      "departureTime": "2025-04-28T16:10",
+      "arrivalTime": "2025-04-28T17:00",
+      "return": "2025-05-05T15:00",
+      "stops": 0,
+      "travelers": 1,
+      "price": {
+        "current": 3200,
+        "original": 3700,
+        "currency": "BDT"
+      }
+    }
+  ]
+}
