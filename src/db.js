@@ -1,10 +1,10 @@
 fetch("http://localhost:3000/user")
-    .then(res => res.json())
-    .then(json =>{
-        json.map(data =>{
-          cardBody.append(card(data));
-        })
+  .then(res => res.json())
+  .then(json => {
+    json.map(data => {
+      cardBody.append(card(data));
     })
+  })
 
 
 
@@ -13,9 +13,9 @@ let cardBody = document.getElementById('card');
 
 
 
-function card({airline, type}) {
-    let innerCard = document.createElement('div');
-    innerCard.innerHTML = `<div class="grid grid-cols-[2fr_1fr] ">
+function card({ airline, type }) {
+  let innerCard = document.createElement('div');
+  innerCard.innerHTML = `<div class="grid grid-cols-[2fr_1fr] ">
         <div class=" flex justify-between border-2 border-neutral-400 border-dashed rounded-2xl  p-10 ">
           <div class="flex">
             <div class="flex items-center gap-3">
@@ -59,7 +59,7 @@ function card({airline, type}) {
           </div>
         </div>
       </div>`;
-    return innerCard
+  return innerCard
 }
 
 
