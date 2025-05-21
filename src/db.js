@@ -11,9 +11,8 @@ fetch("http://localhost:3000/user")
 let cardBody = document.getElementById('card');
 
 
-
-
-function card({ airline, type }) {
+// Flights section
+function card({ airline, type, route, price }) {
   let innerCard = document.createElement('div');
   innerCard.innerHTML = `<div class="grid grid-cols-[2fr_1fr] ">
         <div class=" flex justify-between border-2 border-neutral-400 border-dashed rounded-2xl  p-10 ">
@@ -25,8 +24,8 @@ function card({ airline, type }) {
           </div>
           <div class=" items-center">
             <div class="flex flex-col text-center">
-              <div class="text-lg font-bold"></div>
-              <div class="text-sm text-gray-500"></div>
+              <div class="text-lg font-bold">19:30</div>
+              <div class="text-sm text-gray-500">${route.from.code}</div>
             </div>
           </div>
           <div class="flex">
@@ -42,16 +41,16 @@ function card({ airline, type }) {
           </div>
           <div>
             <div class="flex flex-col text-center">
-              <div class="text-lg font-bold">----</div>
-              <div class="text-sm text-gray-500">----</div>
+              <div class="text-lg font-bold">20:35</div>
+              <div class="text-sm text-gray-500">${route.to.code}</div>
             </div>
           </div>
         </div>
         <div class="border-2 border-dashed border-neutral-400 rounded-2xl h-full -ml-[2px] p-10">
           <div class="flex justify-center gap-4 items-center">
             <div class="flex flex-col">
-              <div class="font-bold text-neutral-900">zzzz</div>
-              <div class=" line-through text-gray-400"></div>
+              <div class="font-bold text-neutral-900">${price.currency} ${price.current}</div>
+              <div class=" line-through text-gray-400">${price.currency} ${price.original}</div>
             </div>
             <div class="flex ">
               <button class="p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
@@ -61,6 +60,3 @@ function card({ airline, type }) {
       </div>`;
   return innerCard
 }
-
-
-
