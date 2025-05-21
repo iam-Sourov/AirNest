@@ -24,7 +24,7 @@ function card({ airline, type, route, price }) {
           </div>
           <div class=" items-center">
             <div class="flex flex-col text-center">
-              <div class="text-lg font-bold">19:30</div>
+              <div class="text-lg font-bold">${route.from.city}</div>
               <div class="text-sm text-gray-500">${route.from.code}</div>
             </div>
           </div>
@@ -41,7 +41,7 @@ function card({ airline, type, route, price }) {
           </div>
           <div>
             <div class="flex flex-col text-center">
-              <div class="text-lg font-bold">20:35</div>
+              <div class="text-lg font-bold">${route.to.city}</div>
               <div class="text-sm text-gray-500">${route.to.code}</div>
             </div>
           </div>
