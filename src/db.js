@@ -5,16 +5,22 @@ fetch("http://localhost:3000/user")
       cardBody.append(card(data));
     })
   })
-
-
-
 let cardBody = document.getElementById('card');
 
+function handleAddToCart(id){
+  const idArr = JSON.parse(localStorage.getItem('ID')) || [];
+
+  if (!idArr.includes(id)){
+    idArr.push(id);
+    localStorage.setItem('ID', JSON.stringify(idArr));
+  }
+  alert(id);
+}
 
 // Flights section
-function card({ airline, type, route, price }) {
+function card({ id, airline, type, route, price }) {
   let innerCard = document.createElement('div');
-  innerCard.innerHTML = `<div class="grid grid-cols-[2fr_1fr] ">
+  innerCard.innerHTML = `<div id ="fCard" class="grid grid-cols-[2fr_1fr] ">
         <div class=" flex justify-between border-2 border-neutral-400 border-dashed rounded-2xl  p-10 ">
           <div class="flex">
             <div class="flex items-center gap-3">
@@ -53,7 +59,7 @@ function card({ airline, type, route, price }) {
               <div class=" line-through text-gray-400">${price.currency} ${price.original}</div>
             </div>
             <div class="flex ">
-              <button class="p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
+              <button onclick="handleAddToCart(${id})" class="p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
             </div>
           </div>
         </div>
