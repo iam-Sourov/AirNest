@@ -15,7 +15,6 @@ function handleAddToCart(id){
     idArr.push(id);
     localStorage.setItem('ID', JSON.stringify(idArr));
   }
-  alert(id);
 }
 
 // Flights section
@@ -60,7 +59,7 @@ function card({ id, airline, type, route, price }) {
               <div class=" line-through text-gray-400">${price.currency} ${price.original}</div>
             </div>
             <div class="flex ">
-              <button onclick="handleAddToCart(${id})" class="p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
+              <button onclick="handleAddToCart(${id})" class="cursor-pointer p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
             </div>
           </div>
         </div>

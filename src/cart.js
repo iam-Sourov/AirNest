@@ -14,12 +14,11 @@ fetch("http://localhost:3000/user")
 let cardBody = document.getElementById('cartID');
 
 function handleRemoveFromCart(id) {
-    const idArr = JSON.parse(localStorage.removeItem('ID')) || [];
-    if (!idArr.includes(id)) {
-        idArr.push(id);
+    const idArr = JSON.parse(localStorage.getItem('ID')) || [];
+    if (idArr.includes(id)) {
+        idArr.splice(id);
         localStorage.removeItem('ID', JSON.stringify(idArr));
     }
-    alert(id);
 }
 
 
@@ -60,9 +59,9 @@ function card({ id, airline, type, route, price }) {
                     </div>
                     <div class=" flex justify-between gap-8">
                         <button onclick="handleRemoveFromCart(${id})"
-                            class=" flex-1 px-5 py-3 border border-dashed border-[#FF4D4D] text-lg font-semibold text-red-500 rounded">Cancel
+                            class=" cursor-pointer flex-1 px-5 py-3 border border-dashed border-[#FF4D4D] text-lg font-semibold text-red-500 rounded">Cancel
                             Ticket</button>
-                        <button class=" flex-1 px-5 py-3 bg-black text-white text-lg font-medium rounded">Confirm Ticket</button>
+                        <button class=" cursor-pointer flex-1 px-5 py-3 bg-black text-white text-lg font-medium rounded">Confirm Ticket</button>
                     </div>
                 </div>
             </div>`;
