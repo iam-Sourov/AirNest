@@ -146,13 +146,12 @@
       <div class="w-[400px] h-[500px]">
         <div class=" border rounded-2xl bg-white  p-5">
           <h1 class="pb-4 text-xl font-medium text-neutral-950">New Ticket</h1>
-          <form class="space-y-4">
+          <form class="form space-y-4">
             <div>
-              <input type="text" class="w-full border rounded p-2" placeholder="Airline Name" />
+              <input name="airline" type="text" class="w-full border rounded p-2" placeholder="Airline Name" />
             </div>
             <div>
-              <label class="block font-medium"></label>
-              <select class="w-full text-neutral-500 border rounded p-2" aria-placeholder="Airline Type">
+              <select name="type" class="w-full text-neutral-500 border rounded p-2" aria-placeholder="Airline Type">
                 <option selected>Airline Type</option>
                 <option>International</option>
                 <option>Business</option>
@@ -162,30 +161,30 @@
             </div>
             <div class="flex gap-2">
               <div class="flex-1">
-                <input type="text" class="w-full border rounded p-2" placeholder="Form" />
+                <input name="from" type="text" class="w-full border rounded p-2" placeholder="Form" />
               </div>
               <div class="flex-1">
-                <input type="text" class="w-full border rounded p-2" placeholder="To" />
+                <input name="to" type="text" class="w-full border rounded p-2" placeholder="To" />
               </div>
             </div>
             <div class="flex gap-2">
               <div class="flex-1">
-                <input type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Departure Date " />
+                <input name="departureTime" type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Departure Date " />
               </div>
               <div class="flex-1">
-                <input type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Return Date"
+                <input name="return" type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Return Date"
                   placeholder="Return Date" />
               </div>
             </div>
             <div>
-              <input type="number" class="w-full border rounded p-2" placeholder="Stapes" />
+              <input name="stops" type="number" class="w-full border rounded p-2" placeholder="Stapes" />
             </div>
             <div class="flex gap-2">
               <div class="flex-1">
-                <input type="text" class="w-full border rounded p-2" placeholder="Regular Price" />
+                <input name="original" type="text" class="w-full border rounded p-2" placeholder="Regular Price" />
               </div>
               <div class="flex-1">
-                <input type="text" class="w-full border rounded p-2" placeholder="Discount Price" />
+                <input name="current" type="text" class="w-full border rounded p-2" placeholder="Discount Price" />
               </div>
             </div>
             <div class="text-sm text-gray-600 space-y-1">
@@ -196,16 +195,15 @@
                   <div>Total Flight Time</div>
                 </div>
                 <div>
-                  <div>-----</div>
-                  <div>-----</div>
-                  <div>--</div>
+                  <div>1h 5m</div>
+                  <div>30m</div>
+                  <div>1h 35m</div>
                 </div>
-
               </div>
             </div>
             <div class="flex justify-between m-7 gap-2">
-              <button onclick="document.getElementById('modal').classList.add('hidden')"">
-                  <a class=" flex-1 bg-black text-white rounded px-5 py-3 font-semibold " href=" #">Cancel</a>
+              <button onclick="document.getElementById('modal').classList.add('hidden')">
+                <a class=" flex-1 bg-black text-white rounded px-5 py-3 font-semibold " href="#">Cancel</a>
               </button>
               <button type="submit">
                 <a class=" flex-1 bg-black text-white rounded px-5 py-3" href="">Add Ticket</a>
@@ -215,7 +213,8 @@
         </div>
       </div>
     </div>
-    <script src="db.js"></script>
-</body>
 
+    <script src="db.js"></script>
+    <script src="newDb.js"></script>
+</body>
 </html>

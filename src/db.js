@@ -1,4 +1,3 @@
-
 fetch("http://localhost:3000/user")
   .then(res => res.json())
   .then(json => {
@@ -8,10 +7,10 @@ fetch("http://localhost:3000/user")
   })
 let cardBody = document.getElementById('card');
 
-function handleAddToCart(id){
+function handleAddToCart(id) {
   const idArr = JSON.parse(localStorage.getItem('ID')) || [];
 
-  if (!idArr.includes(id)){
+  if (!idArr.includes(id)) {
     idArr.push(id);
     localStorage.setItem('ID', JSON.stringify(idArr));
   }

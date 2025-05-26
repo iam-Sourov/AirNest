@@ -241,9 +241,6 @@
   .-ml-\[2px\] {
     margin-left: calc(2px * -1);
   }
-  .block {
-    display: block;
-  }
   .flex {
     display: flex;
   }

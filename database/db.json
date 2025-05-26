@@ -1,6 +1,7 @@
 {
   "user": [
-    { "id": "1",
+    {
+      "id": "1",
       "airline": "Biman Bangladesh",
       "type": "Domestic",
       "route": {
@@ -24,7 +25,8 @@
         "currency": "BDT"
       }
     },
-    { "id": "2",
+    {
+      "id": "2",
       "airline": "Emirates",
       "type": "International",
       "route": {
@@ -48,7 +50,8 @@
         "currency": "BDT"
       }
     },
-    { "id": "3",
+    {
+      "id": "3",
       "airline": "Novoair",
       "type": "Domestic",
       "route": {
@@ -72,7 +75,8 @@
         "currency": "BDT"
       }
     },
-    { "id": "4",
+    {
+      "id": "4",
       "airline": "Singapore Airlines",
       "type": "International",
       "route": {
@@ -445,6 +449,42 @@
         "original": 3700,
         "currency": "BDT"
       }
+    },
+    {
+      "id": "7c3a",
+      "airline": "Biman Bangladesh",
+      "type": "Domestic",
+      "from": "Dhaka",
+      "to": "khulna",
+      "departureTime": "2025-05-27",
+      "return": "2025-05-28",
+      "stops": "2",
+      "original": "5000",
+      "current": "2000"
+    },
+    {
+      "id": "2070",
+      "airline": "Biman Bangladesh",
+      "type": "International",
+      "from": "Dhaka",
+      "to": "khulna",
+      "departureTime": "2025-05-29",
+      "return": "2025-05-30",
+      "stops": "2",
+      "original": "5000",
+      "current": "3200"
+    },
+    {
+      "id": "4248",
+      "airline": "AirIndia",
+      "type": "Business",
+      "from": "Mumbai",
+      "to": "Rajesthan",
+      "departureTime": "2025-05-28",
+      "return": "2025-05-30",
+      "stops": "2",
+      "original": "5000",
+      "current": "3200"
     }
   ]
 }
