@@ -1,29 +1,32 @@
 const cartId = localStorage.getItem('ID')
-console.log(cartId);
-
+let cardBody = document.getElementById('cartID');
 fetch("http://localhost:3000/user")
     .then(res => res.json())
     .then(json => {
         json.map(data => {
             const id = data.id;
-            if (cartId.includes(id)) {
+            if (cartId.includes(String(id))) {
                 cardBody.append(card(data));
             }
         })
     })
-let cardBody = document.getElementById('cartID');
 
 function handleRemoveFromCart(id) {
-    const idArr = JSON.parse(localStorage.getItem('ID')) || [];
-    if (idArr.includes(id)) {
-        idArr.splice(id);
-        localStorage.removeItem('ID', JSON.stringify(idArr));
+    let idArr = JSON.parse(localStorage.getItem('ID')) || [];
+
+    const index = idArr.indexOf(id);
+    if (index !== -1) {
+        idArr.splice(index, 1); 
+        localStorage.setItem('ID', JSON.stringify(idArr));
+        window.location.reload();
     }
 }
 
 
+
+
 // Flights section
-function card({ id, airline, type, route, price }) {
+function card({ id, airline, type, route, price, stops }) {
     let innerCard = document.createElement('div');
     innerCard.innerHTML = `<div class="flex flex-col">
                 <div class=" flex flex-col border-2 border-dashed rounded-2xl -m-0.5 p-10 ">
@@ -37,7 +40,7 @@ function card({ id, airline, type, route, price }) {
                             <div class="text-sm text-gray-500">${route.from.code}</div>
                         </div>
                         <div class="flex flex-col items-center">
-                            <div class="text-sm text-gray-500">----</div>
+                            <div class="text-sm text-gray-500">${stops} Steps</div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="324" height="6" viewBox="0 0 324 6"
                                 fill="none">
                                 <path
