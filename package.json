@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "json-server --watch ./database/db.json",
-    "dev": "concurrently \"tailwindcss -i ./src/input.css -o ./src/output.css --watch\" \"npx live-server src\"",
+    "dev": "concurrently \"tailwindcss -i ./src/input.css -o ./src/output.css --watch\"",
     "build": "tailwindcss -i ./src/input.css -o ./src/output.css --minify"
   },
   "dependencies": {

@@ -26,13 +26,13 @@
     <div class="grid grid-cols-2 gap-3 p-4 m5">
       <div class="z-10 space-y-10">
         <h1 class="leading-[100%] text-[120px] font-rubik font-normal text-neutral-700 text-nowrap">
-          Where Your Journey <br class=""> Takes Flight
-        </h1>
+          Where Your Journey <br class=""> Takes Flight</h1>
         <p class=" w-[544px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
           Step into a world where every flight is the start of a story. Whether you’re chasing sunsets,
           exploring hidden towns, or reuniting with loved ones, let us help you find the perfect journey—
           full of wonder, comfort, and a touch of magic.</p>
-        <div class="flex flex-col gap-2 border-2 border-dashed border-neutral-400 p-3 rounded-xl w-[600px] ">
+        <form action="" id="form"
+          class="flex flex-col gap-2 border-2 border-dashed border-neutral-400 p-3 rounded-xl w-[700px] ">
           <div class="flex flex-row justify-between gap-3 ">
             <div class=" flex-1 border-2 border-dashed border-neutral-400 p-2 rounded-xl">
               <div class="flex gap-1">
@@ -46,15 +46,32 @@
                 <h1 class="font-normal text-neutral-500">
                   From</h1>
               </div>
-              <form class="mx-auto">
+              <div class="mx-auto">
                 <select id="from" class="font-medium">
-                  <option selected>Bangladesh</option>
-                  <option value="DH">India</option>
-                  <option value="KH">Australia</option>
-                  <option value="SH">Russia</option>
-                  <option value="CG">Pakistan</option>
+                  <optgroup label="Domestic">
+                    <option value="DAC">Dhaka</option>
+                    <option value="CXB">Cox's Bazar</option>
+                    <option value="JSR">Jessore</option>
+                    <option value="ZYL">Sylhet</option>
+                    <option value="CGP">Chittagong</option>
+                    <option value="SPD">Saidpur</option>
+                  </optgroup>
+
+                  <optgroup label="International">
+                    <option value="AUH">Abu Dhabi</option>
+                    <option value="BKK">Bangkok</option>
+                    <option value="CCU">Kolkata</option>
+                    <option value="DEL">Delhi</option>
+                    <option value="DXB">Dubai</option>
+                    <option value="IST">Istanbul</option>
+                    <option value="KUL">Kuala Lumpur</option>
+                    <option value="SHJ">Sharjah</option>
+                    <option value="SIN">Singapore</option>
+                    <option value="PAK">Pakistan</option>
+                  </optgroup>
+
                 </select>
-              </form>
+              </div>
             </div>
             <div class="flex-1 border-2 border-dashed  border-neutral-400 p-2 rounded-xl">
               <div class="flex gap-1 items-center">
@@ -67,15 +84,16 @@
                 </svg>
                 <h1 class="font-normal text-neutral-500">To</h1>
               </div>
-              <form class="w-8xl">
-                <select id="from" class="font-medium">
-                  <option selected>Pakistan</option>
+              <div id="read" class="w-8xl">
+                <select id="to" class="font-medium">
+                  <option selected>Choose where to go</option>
+                  <option value="PAK">Pakistan</option>
                   <option value="DH">Russia</option>
                   <option value="KH">Australia</option>
                   <option value="SH">India</option>
                   <option value="CG">Bangladesh</option>
                 </select>
-              </form>
+              </div>
             </div>
           </div>
           <div class="flex flex-row justify-between gap-4">
@@ -89,7 +107,7 @@
                 <h1 class="font-normal text-neutral-500">Departure</h1>
               </div>
               <div>
-                25 April, (19:30)
+                <input type="datetime-local" name="" id="departure">
               </div>
               <!--select-->
             </div>
@@ -103,7 +121,7 @@
                 <h1 class="font-normal text-neutral-500">Return</h1>
               </div>
               <div>
-                25 May, (20:35)
+                <input type="datetime-local" name="" id="return">
               </div>
             </div>
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-2 rounded-xl">
@@ -114,18 +132,19 @@
                 </svg>
                 <h1 class="font-normal text-neutral-500">Travelers</h1>
               </div>
-              <form class="mx-auto">
-                <select id="from" class="font-medium ">
-                  <option selected>Select Travelers</option>
-                  <option value="travelers">1 Person</option>
-                  <option value="travelers">2 Person</option>
-                  <option value="travelers">3 Person</option>
-                  <option value="travelers">4 Person</option>
+              <div class="mx-auto">
+                <select id="travelers" class="font-medium ">
+                  <option>Select Travelers</option>
+                  <option value="1">1 Person</option>
+                  <option value="2">2 Person</option>
+                  <option value="3">3 Person</option>
+                  <option value="4">4 Person</option>
                 </select>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
+        
+        </form>
       </div>
       <div>
         <div class=" -z-10 flex justify-center items-center">
@@ -169,11 +188,12 @@
             </div>
             <div class="flex gap-2">
               <div class="flex-1">
-                <input name="departureTime" type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Departure Date " />
+                <input name="departureTime" type="date" class="w-full  text-neutral-500 border rounded p-2"
+                  placeholder="Departure Date " />
               </div>
               <div class="flex-1">
-                <input name="return" type="date" class="w-full  text-neutral-500 border rounded p-2" placeholder="Return Date"
-                  placeholder="Return Date" />
+                <input name="return" type="date" class="w-full  text-neutral-500 border rounded p-2"
+                  placeholder="Return Date" placeholder="Return Date" />
               </div>
             </div>
             <div>
@@ -213,8 +233,9 @@
         </div>
       </div>
     </div>
-
     <script src="db.js"></script>
+    <script src="filter.js"></script>
     <script src="newDb.js"></script>
 </body>
+
 </html>
