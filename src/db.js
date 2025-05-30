@@ -1,4 +1,7 @@
-fetch(`http://localhost:3000/user`)
+const filterData = localStorage.getItem('filterData')
+console.log(filterData);
+
+fetch(`http://localhost:3000/flights?route.from.code=${filterData.from}&route.to.code=${filterData.to}`)
   .then(res => res.json())
   .then(json => {
     json.map(data => {
