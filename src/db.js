@@ -1,5 +1,7 @@
-const filterData = localStorage.getItem('filterData')
-console.log(filterData);
+const filterData = JSON.parse(localStorage.getItem("flights"));
+console.log(filterData.from);
+
+
 
 fetch(`http://localhost:3000/flights?route.from.code=${filterData.from}&route.to.code=${filterData.to}`)
   .then(res => res.json())
@@ -16,6 +18,7 @@ function handleAddToCart(id) {
   if (!idArr.includes(id)) {
     idArr.push(id);
     localStorage.setItem('ID', JSON.stringify(idArr));
+    
   }
 }
 
