@@ -5,8 +5,6 @@ filterForm.addEventListener('change', function (e) {
     const from = document.getElementById('from').value;
     const to = document.getElementById('to').value;
     const travelers = document.getElementById('traveler').value;
-    console.log(from);
-    console.log(to);
 
     const filterData = {
         from,
@@ -14,6 +12,7 @@ filterForm.addEventListener('change', function (e) {
         travelers,
     };
     localStorage.setItem("flights", JSON.stringify(filterData));
+    fetchFlights();
 })
 
 
@@ -30,15 +29,14 @@ async function loadCities() {
 
         citySet.set(from.code, from.city);
         citySet.set(to.code, to.city);
-        
+
     });
 
     const cityFrom = document.getElementById("from");
     const cityTo = document.getElementById("to");
 
     const sortedCities = Array.from(citySet.entries()).sort((a, b) => a[1].localeCompare(b[1]));
-    console.log(sortedCities);
-    
+
     sortedCities.forEach(([code, city]) => {
         const from = document.createElement("option");
         const to = document.createElement("option");

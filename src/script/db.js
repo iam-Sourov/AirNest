@@ -1,16 +1,34 @@
-const filterData = JSON.parse(localStorage.getItem("flights"));
-console.log(filterData.from);
-
-
-
-fetch(`http://localhost:3000/flights?route.from.code=${filterData.from}&route.to.code=${filterData.to}`)
-  .then(res => res.json())
-  .then(json => {
-    json.map(data => {
-      cardBody.append(card(data));
-    })
-  })
 let cardBody = document.getElementById('card');
+
+function fetchFlights() {
+  const filterData = JSON.parse(localStorage.getItem("flights"));
+  if (!filterData) {
+    fetch(`http://localhost:3000/flights`)
+      .then(res => res.json())
+      .then(json => {
+        const allCards = cardBody.querySelectorAll('#fCard');
+        allCards.forEach(card =>
+          card.remove()
+        )
+        json.map(data => {
+          cardBody.append(card(data));
+        })
+      })
+    return
+  }
+  fetch(`http://localhost:3000/flights?route.from.code=${filterData.from}&route.to.code=${filterData.to}`)
+    .then(res => res.json())
+    .then(json => {
+      const allCards = cardBody.querySelectorAll('#fCard');
+      allCards.forEach(card =>
+        card.remove()
+      )
+      json.map(data => {
+        cardBody.append(card(data));
+      })
+    })
+
+}
 
 function handleAddToCart(id) {
   const idArr = JSON.parse(localStorage.getItem('ID')) || [];
@@ -18,7 +36,7 @@ function handleAddToCart(id) {
   if (!idArr.includes(id)) {
     idArr.push(id);
     localStorage.setItem('ID', JSON.stringify(idArr));
-    
+
   }
 }
 
@@ -71,3 +89,5 @@ function card({ id, airline, type, route, price }) {
       </div>`;
   return innerCard
 }
+
+fetchFlights();

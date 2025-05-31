@@ -1,6 +1,7 @@
-const cartId = localStorage.getItem('ID')
+const cartId = localStorage.getItem('ID') || [];
+
 let cardBody = document.getElementById('cartID');
-fetch("http://localhost:3000/user")
+fetch("http://localhost:3000/flights")
     .then(res => res.json())
     .then(json => {
         json.map(data => {
@@ -12,14 +13,10 @@ fetch("http://localhost:3000/user")
     })
 
 function handleRemoveFromCart(id) {
-    let idArr = JSON.parse(localStorage.getItem('ID')) || [];
-
-    const index = idArr.indexOf(id);
-    if (index !== -1) {
-        idArr.splice(index, 1); 
-        localStorage.setItem('ID', JSON.stringify(idArr));
-        window.location.reload();
-    }
+    const idArr = (JSON.parse(localStorage.getItem('ID')) || []).filter(cartId => cartId !== id);
+    localStorage.setItem('ID', JSON.stringify(idArr));
+    const card = document.getElementById(`card-${id}`);
+    if (card) card.remove();
 }
 
 
@@ -28,6 +25,7 @@ function handleRemoveFromCart(id) {
 // Flights section
 function card({ id, airline, type, route, price, stops }) {
     let innerCard = document.createElement('div');
+    innerCard.id = `card-${id}`;
     innerCard.innerHTML = `<div class="flex flex-col">
                 <div class=" flex flex-col border-2 border-dashed rounded-2xl -m-0.5 p-10 ">
                     <div class="flex justify-center items-center gap-4">
