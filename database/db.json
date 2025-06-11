@@ -1,31 +1,6 @@
 {
   "flights": [
     {
-      "id": "1",
-      "airline": "Biman Bangladesh",
-      "type": "Domestic",
-      "route": {
-        "from": {
-          "city": "Dhaka",
-          "code": "DAC"
-        },
-        "to": {
-          "city": "Cox's Bazar",
-          "code": "CXB"
-        }
-      },
-      "departureTime": "2025-04-25T19:30",
-      "arrivalTime": "2025-04-25T20:35",
-      "return": "2025-05-25T20:00",
-      "stops": 0,
-      "travelers": 2,
-      "price": {
-        "current": 4797,
-        "original": 5390,
-        "currency": "BDT"
-      }
-    },
-    {
       "id": "2",
       "airline": "Emirates",
       "type": "International",
@@ -447,6 +422,55 @@
       "price": {
         "current": 3200,
         "original": 3700,
+        "currency": "BDT"
+      }
+    },
+    {
+      "id": "19",
+      "airline": "AirIndia",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Mumbai",
+          "code": "MUM"
+        },
+        "to": {
+          "city": "Kashmir",
+          "code": "KAS"
+        }
+      },
+      "departureTime": "2025-06-19",
+      "arrivalTime": "",
+      "return": "2025-06-27",
+      "stops": 2,
+      "travelers": 1,
+      "price": {
+        "current": 4000,
+        "original": 5000,
+        "currency": "BDT"
+      }
+    },
+    {
+      "id": "20",
+      "airline": "Biman Bangladesh",
+      "type": "International",
+      "route": {
+        "from": {
+          "city": "Dhaka",
+          "code": "DHA"
+        },
+        "to": {
+          "city": "khulna",
+          "code": "KHU"
+        }
+      },
+      "departureTime": "2025-06-14",
+      "arrivalTime": "",
+      "return": "2025-06-16",
+      "stops": 1,
+      "price": {
+        "current": 3200,
+        "original": 5000,
         "currency": "BDT"
       }
     }

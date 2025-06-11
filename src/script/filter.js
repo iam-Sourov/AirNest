@@ -5,7 +5,6 @@ filterForm.addEventListener('change', function (e) {
     const from = document.getElementById('from').value;
     const to = document.getElementById('to').value;
     const travelers = document.getElementById('traveler').value;
-
     const filterData = {
         from,
         to,
