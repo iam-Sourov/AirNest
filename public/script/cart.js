@@ -68,3 +68,6 @@ function card({ id, airline, type, route, price, stops }) {
             </div>`;
     return innerCard
 }
+if (cartId.length === 0) {
+  cartId.innerHTML = '<p class="text-center col-span-full text-gray-500">Your cart is empty.</p>';
+}
