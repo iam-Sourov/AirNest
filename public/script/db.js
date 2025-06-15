@@ -11,6 +11,16 @@ function fetchFlights() {
           card.remove()
         )
         json.map(data => {
+          const savedIDs = JSON.parse(localStorage.getItem('ID')) || [];
+if (savedIDs.includes(data.id)) {
+  const btn = document.getElementById(`add-btn-${data.id}`);
+  if (btn) {
+    btn.classList.remove('bg-neutral-900');
+    btn.classList.add('bg-green-600');
+    btn.textContent = 'Added';
+  }
+}
+
           cardBody.append(card(data));
         })
       })
@@ -32,13 +42,20 @@ function fetchFlights() {
 
 function handleAddToCart(id) {
   const idArr = JSON.parse(localStorage.getItem('ID')) || [];
+  const index = idArr.indexOf(id);
+  const btn = document.getElementById(`add-btn-${id}`);
 
-  if (!idArr.includes(id)) {
+  if (index === -1) {
     idArr.push(id);
     localStorage.setItem('ID', JSON.stringify(idArr));
-
+    if (btn) {
+      btn.classList.remove('bg-neutral-900');
+      btn.classList.add('bg-green-600');
+      btn.textContent = 'Added';
+    }
   }
 }
+
 
 // Flights section
 function card({ id, airline, type, route, price }) {
@@ -82,12 +99,13 @@ function card({ id, airline, type, route, price }) {
               <div class=" line-through text-gray-400">${price.currency} ${price.original}</div>
             </div>
             <div class="flex ">
-              <button onclick="handleAddToCart(${id})" class="cursor-pointer p-5 bg-neutral-900 text-white text-sm rounded-2xl ">Add To Cart</button>
+              <button id="add-btn-${id}" onclick="handleAddToCart(${id})" class="cursor-pointer p-5 bg-neutral-900 text-white text-sm rounded-2xl transition-colors duration-300">
+                Add To Cart
+              </button>
             </div>
           </div>
         </div>
       </div>`;
   return innerCard
 }
-
 fetchFlights();

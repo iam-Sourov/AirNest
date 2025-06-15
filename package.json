@@ -1,8 +1,8 @@
 {
   "scripts": {
     "start": "json-server --watch ./database/db.json",
-    "dev": "concurrently \"tailwindcss -i ./src/input.css -o ./src/output.css --watch\"",
-    "build": "tailwindcss -i ./src/input.css -o ./src/output.css --minify"
+    "dev": "concurrently \"tailwindcss -i ./public/input.css -o ./public/output.css --watch\"",
+    "build": "tailwindcss -i ./public/input.css -o ./public/output.css --minify"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.4",
@@ -12,5 +12,19 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
-  }
+  },
+  "name": "airnest",
+  "version": "1.0.0",
+  "description": "\"# AirNest\"",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iam-Sourov/AirNest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iam-Sourov/AirNest/issues"
+  },
+  "homepage": "https://github.com/iam-Sourov/AirNest#readme"
 }

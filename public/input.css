@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+
+@import "tailwindcss";
+
+
+@theme {
+  --font-rubik: "Rubik Doodle Shadow", system-ui;
+  --font-inter: "Inter", system-ui;
+}
+
+
+@keyframes flyin {
+  0% {
+    transform: translateX(500px) translateY(-200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-flyin {
+  animation: flyin 1.5s ease-out forwards;
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));

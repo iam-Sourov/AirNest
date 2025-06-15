@@ -15,7 +15,7 @@ filterForm.addEventListener('change', function (e) {
 })
 
 
-//dynamic form data
+
 async function loadCities() {
     const res = await fetch("http://localhost:3000/flights");
     const flights = await res.json();
