@@ -44,7 +44,7 @@ async function loadCities() {
         to.value = code;
         to.textContent = city;
         cityFrom.appendChild(from);
-        cityTo.appendChild(to);
+        cityTo.appendChild (to);
     });
 }
 loadCities()
