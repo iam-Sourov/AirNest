@@ -26,5 +26,3 @@
   animation: flyin 1.5s ease-out forwards;
 }
 
-
-@custom-variant dark (&:where(.dark, .dark *));
