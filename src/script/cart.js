@@ -27,7 +27,7 @@ function card({ id, airline, type, route, price, stops }) {
     let innerCard = document.createElement('div');
     innerCard.id = `card-${id}`;
     innerCard.innerHTML = `<div class="flex flex-col">
-                <div class=" flex flex-col border-2 border-dashed rounded-2xl -m-0.5 p-10 ">
+                <div class=" flex flex-col border-2 border-dashed rounded-2xl -m-0.5 p-10 space-y-6 gap-4 ">
                     <div class="flex justify-center items-center gap-4">
                         <div class="font-semibold text-2xl">${airline}</div>
                         <div class="text-sm text-neutral-600 px-2 py-0.5 bg-neutral-100 rounded-full">${type}</div>
@@ -62,12 +62,99 @@ function card({ id, airline, type, route, price, stops }) {
                         <button onclick="handleRemoveFromCart(${id})"
                             class=" cursor-pointer flex-1 px-5 py-3 border border-dashed border-[#FF4D4D] text-lg font-semibold text-red-500 rounded">Cancel
                             Ticket</button>
-                        <button class=" cursor-pointer flex-1 px-5 py-3 bg-black text-white text-lg font-medium rounded">Confirm Ticket</button>
+                        <button onclick="document.getElementById('paymentModal').classList.remove('hidden')" class=" cursor-pointer flex-1 px-5 py-3 bg-black text-white text-lg font-medium rounded">Confirm Ticket</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Payment Modal -->
+            <div id="paymentModal"
+                class=" hidden fixed inset-0 flex bg-black/70 justify-center items-center z-20 transition-opacity duration-300 ease-in-out p-4">
+                <div class="w-full max-w-lg">
+                    <div class="border rounded-2xl bg-white p-6 shadow-xl">
+                        <!-- Header -->
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-medium text-neutral-950">Payment Information</h2>
+                            <button onclick="document.getElementById('paymentModal').classList.add('hidden')"
+                                class="text-gray-500 hover:text-black">✕</button>
+                        </div>
+
+                        <!-- Payment Form -->
+                        <form id="paymentForm" class="space-y-5">
+                            <!-- Cardholder Name -->
+                            <div>
+                                <label for="cardName" class="block text-sm font-medium text-neutral-600 mb-1">
+                                    Cardholder Name
+                                </label>
+                                <input id="cardName" type="text" placeholder="Enter Your Name"
+                                    class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
+                            </div>
+
+                            <!-- Card Number -->
+                            <div>
+                                <label for="cardNumber" class="block text-sm font-medium text-neutral-600 mb-1">
+                                    Card Number
+                                </label>
+                                <input id="cardNumber" type="text" placeholder="1234 **** **** ****" maxlength="19"
+                                    class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
+                            </div>
+
+                            <!-- Expiry + CVV -->
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <div class="flex-1">
+                                    <label for="expiry" class="block text-sm font-medium text-neutral-600 mb-1">
+                                        Expiry Date
+                                    </label>
+                                    <input id="expiry" type="text" placeholder="MM/YY" maxlength="5"
+                                        class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
+                                </div>
+
+                                <div class="flex-1">
+                                    <label for="cvv" class="block text-sm font-medium text-neutral-600 mb-1">
+                                        CVV
+                                    </label>
+                                    <input id="cvv" type="password" placeholder="123" maxlength="4"
+                                        class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
+                                </div>
+                            </div>
+
+                            <!-- Billing Address -->
+                            <div>
+                                <label for="address" class="block text-sm font-medium text-neutral-600 mb-1">
+                                    Billing Address
+                                </label>
+                                <input id="address" type="text" placeholder="Enter Your Address Here"
+                                    class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
+                            </div>
+
+                            <!-- Total + Actions -->
+                            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-5 border-t">
+                                <div class="text-lg font-medium text-neutral-700">
+                                    Total: <span class="text-green-600 font-semibold">${price.current}</span>
+                                </div>
+                                <div class="flex gap-2 w-full sm:w-auto">
+                                    <button type="button"
+                                        onclick="document.getElementById('paymentModal').classList.add('hidden')"
+                                        class="flex-1 sm:flex-none bg-gray-800 text-white rounded-lg px-5 py-2 hover:bg-black transition">
+                                        Cancel
+                                    </button>
+                                    <button type="submit"
+                                        class="flex-1 sm:flex-none bg-green-600 text-white rounded-lg px-6 py-2 hover:bg-green-700 transition">
+                                        Pay Now
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>`;
+
     return innerCard
 }
 if (cartId.length === 0) {
-  cartId.innerHTML = '<p class="text-center col-span-full text-gray-500">Your cart is empty.</p>';
+    cartId.innerHTML = '<p class="text-center col-span-full text-gray-500">Your cart is empty.</p>';
 }
