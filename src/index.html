@@ -35,76 +35,72 @@
     <div class="grid md:grid-cols-2 gap-3 p-4 m5">
       <div class="z-10 space-y-10">
         <h1
-          class="leading-[100%] text-5xl md:text-7xl lg:text-[120px] font-rubik font-normal text-neutral-700 text-nowrap">
+          class="leading-[100%] text-4xl md:text-7xl lg:text-[120px] font-rubik font-normal text-neutral-700 text-wrap">
           Where Your Journey <br class=""> Takes Flight</h1>
         <p class=" w-full lg:w-[544px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
           Step into a world where every flight is the start of a story. Whether you’re chasing sunsets,
           exploring hidden towns, or reuniting with loved ones, let us help you find the perfect journey—
           full of wonder, comfort, and a touch of magic.</p>
         <form id="form"
-          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 rounded-xl w-full md:w-[700px]">
-          <div class="flex flex-col md:flex-row gap-4">
+          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 sm:p-6 rounded-xl w-full max-w-xl md:max-w-[700px] mx-auto">
 
+          <!-- From & To -->
+          <div class="flex flex-col md:flex-row gap-3 sm:gap-4">
+            <!-- From -->
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="from" class="flex gap-2 items-center text-neutral-500 font-medium mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M1.66663 18.3333H18.3333M5.29996 14.5L3.33329 14.1667L1.66663 10.8333L2.58329 10.375C2.81592 10.2578 3.0728 10.1967 3.33329 10.1967C3.59379 10.1967 3.85066 10.2578 4.08329 10.375L4.22496 10.4583C4.45759 10.5756 4.71446 10.6366 4.97496 10.6366C5.23546 10.6366 5.49233 10.5756 5.72496 10.4583L6.66663 9.99999L4.16663 4.99999L4.91663 4.62499C5.19385 4.48861 5.50354 4.43198 5.81109 4.46141C6.11864 4.49084 6.41196 4.60518 6.65829 4.79166L10.0083 7.29166C10.2555 7.47975 10.5503 7.59503 10.8595 7.62448C11.1687 7.65393 11.48 7.59638 11.7583 7.45833L15.25 5.74166C15.6962 5.51673 16.2102 5.46622 16.6916 5.59999L17.5 5.83333C17.667 5.87971 17.8216 5.96272 17.9525 6.07633C18.0834 6.18994 18.1873 6.33129 18.2568 6.49011C18.3262 6.64893 18.3594 6.82123 18.3539 6.99447C18.3484 7.16772 18.3043 7.33756 18.225 7.49166L17.9083 8.12499C17.7166 8.50833 17.4083 8.82499 17.0166 9.02499L6.31663 14.3333C6.002 14.4892 5.64619 14.5417 5.29996 14.4833V14.5Z"
-                    stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>From
+              <label for="from" class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
+                ✈️ From
               </label>
               <select id="from"
-                class="w-full font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded p-2"
+                class="w-full font-medium bg-white rounded p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Select departure</option>
               </select>
             </div>
 
+            <!-- To -->
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="to" class="flex gap-2 items-center text-neutral-500 font-medium mb-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 20" fill="none">
-                  <path
-                    d="M2.16663 18.3333H18.8333M3.64163 8.97501L2.16663 7.50001L3.83329 3.75001L4.74996 4.20834C5.20829 4.44168 5.49996 4.90834 5.49996 5.41668C5.49996 5.92501 5.79163 6.39168 6.24996 6.62501L7.16663 7.08334L9.66662 2.08334L10.5416 2.52501C10.7848 2.64613 10.9947 2.82485 11.153 3.04562C11.3113 3.26638 11.4133 3.5225 11.45 3.79168L12.05 8.29168C12.0867 8.56085 12.1886 8.81697 12.3469 9.03774C12.5052 9.25851 12.7151 9.43723 12.9583 9.55834L16.625 11.3917C16.975 11.575 17.275 11.85 17.4666 12.1917L17.9666 13.05C18.375 13.7833 17.9166 14.7 17.0833 14.8L16.1 14.925C15.7083 14.975 15.3083 14.9083 14.9583 14.725L4.07496 9.29168C3.91436 9.21022 3.76801 9.10328 3.64163 8.97501Z"
-                    stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg> To
+              <label for="to" class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
+                🛬 To
               </label>
               <select id="to"
-                class="w-full font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded p-2"
+                class="w-full font-medium bg-white rounded p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Select destination</option>
               </select>
             </div>
           </div>
 
-          <div class="flex flex-col md:flex-row gap-4">
-
+          <!-- Departure / Return / Travelers -->
+          <div class="flex flex-col md:flex-row gap-3 sm:gap-4">
+            <!-- Departure -->
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="departure" class="flex gap-2 items-center text-neutral-500 font-medium mb-1"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M6.66667 1.66669V5.00002M13.3333 1.66669V5.00002M2.5 8.33335H17.5M6.66667 11.6667H6.675M10 11.6667H10.0083M13.3333 11.6667H13.3417M6.66667 15H6.675M10 15H10.0083M13.3333 15H13.3417M4.16667 3.33335H15.8333C16.7538 3.33335 17.5 4.07955 17.5 5.00002V16.6667C17.5 17.5872 16.7538 18.3334 15.8333 18.3334H4.16667C3.24619 18.3334 2.5 17.5872 2.5 16.6667V5.00002C2.5 4.07955 3.24619 3.33335 4.16667 3.33335Z"
-                    stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg> Departure</label>
+              <label for="departure"
+                class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
+                📅 Departure
+              </label>
               <input type="datetime-local" id="departure"
-                class="w-full p-2 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+                class="w-full p-2.5 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
             </div>
 
+            <!-- Return -->
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="return" class="flex gap-2 items-center text-neutral-500 font-medium mb-1"><svg
-                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path
-                    d="M6.66667 1.66669V5.00002M13.3333 1.66669V5.00002M2.5 8.33335H17.5M6.66667 11.6667H6.675M10 11.6667H10.0083M13.3333 11.6667H13.3417M6.66667 15H6.675M10 15H10.0083M13.3333 15H13.3417M4.16667 3.33335H15.8333C16.7538 3.33335 17.5 4.07955 17.5 5.00002V16.6667C17.5 17.5872 16.7538 18.3334 15.8333 18.3334H4.16667C3.24619 18.3334 2.5 17.5872 2.5 16.6667V5.00002C2.5 4.07955 3.24619 3.33335 4.16667 3.33335Z"
-                    stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg> Return</label>
+              <label for="return"
+                class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
+                🔁 Return
+              </label>
               <input type="datetime-local" id="return"
-                class="w-full p-2 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                class="w-full p-2.5 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
+            <!-- Travelers -->
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="traveler" class="flex gap-2 items-center text-neutral-500 font-medium mb-1">👥
-                Travelers</label>
+              <label for="traveler"
+                class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
+                👥 Travelers
+              </label>
               <select id="traveler"
-                class="w-full font-medium bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded p-2"
+                class="w-full font-medium bg-white rounded p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
                 <option value="">Select</option>
                 <option value="1">1 Person</option>
@@ -115,6 +111,7 @@
             </div>
           </div>
         </form>
+
       </div>
       <!--Hero IMG -->
       <div class="hidden md:flex justify-center items-center">
@@ -132,55 +129,55 @@
     </div>
     <!-- Modal Section -->
     <div id="modal"
-      class=" hidden fixed inset-0 flex bg-black/70 justify-center items-center z-10 transition-opacity duration-300 ease-in-out p-4">
-      <div class="w-full max-w-md">
-        <div class=" border rounded-2xl bg-white  p-5">
-          <h1 class="pb-4 text-xl font-medium text-neutral-950">New Ticket</h1>
-          <form id="m-form" class=" space-y-4">
-            <div>
-              <input name="airline" type="text" class="w-full border rounded p-2" placeholder="Airline Name" />
+      class="hidden fixed inset-0 flex bg-black/70 justify-center items-center z-10 transition-opacity duration-300 ease-in-out p-4">
+
+      <!-- Modal Container -->
+      <div class="w-full max-w-sm sm:max-w-md md:max-w-lg">
+        <div class="border rounded-2xl bg-white p-4 sm:p-6">
+
+          <!-- Title -->
+          <h1 class="pb-4 text-lg sm:text-xl font-medium text-neutral-950">New Ticket</h1>
+
+          <!-- Form -->
+          <form id="m-form" class="space-y-4">
+
+            <!-- Airline Name -->
+            <input name="airline" type="text" class="w-full border rounded p-2.5" placeholder="Airline Name" />
+
+            <!-- Type -->
+            <select name="type" class="w-full text-neutral-500 border rounded p-2.5">
+              <option disabled selected>Airline Type</option>
+              <option>International</option>
+              <option>Business</option>
+              <option>Domestic</option>
+              <option>Economic</option>
+            </select>
+
+            <!-- From / To -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input name="from" type="text" class="flex-1 border rounded p-2.5" placeholder="From" />
+              <input name="to" type="text" class="flex-1 border rounded p-2.5" placeholder="To" />
             </div>
-            <div>
-              <select name="type" class="w-full text-neutral-500 border rounded p-2" aria-placeholder="Airline Type">
-                <!-- <option selected>Airline Type</option> -->
-                <option>International</option>
-                <option>Business</option>
-                <option>Domestic</option>
-                <option>Economic</option>
-              </select>
+
+            <!-- Departure / Return -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input name="departureTime" type="date" class="flex-1 text-neutral-500 border rounded p-2.5" />
+              <input name="return" type="date" class="flex-1 text-neutral-500 border rounded p-2.5" />
             </div>
-            <div class="flex flex-col sm:flex-row gap-2">
-              <div class="flex-1">
-                <input name="from" type="text" class="w-full border rounded p-2" placeholder="Form" />
-              </div>
-              <div class="flex-1">
-                <input name="to" type="text" class="w-full border rounded p-2" placeholder="To" />
-              </div>
+
+            <!-- Stops -->
+            <input name="stops" type="number" class="w-full border rounded p-2.5" placeholder="Stops" />
+
+            <!-- Prices -->
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input name="original" type="text" class="flex-1 border rounded p-2.5" placeholder="Regular Price" />
+              <input name="current" type="text" class="flex-1 border rounded p-2.5" placeholder="Discount Price" />
             </div>
-            <div class="flex flex-col sm:flex-row gap-2">
-              <div class="flex-1">
-                <input name="departureTime" type="date" class="w-full  text-neutral-500 border rounded p-2"
-                  placeholder="Departure Date " />
-              </div>
-              <div class="flex-1">
-                <input name="return" type="date" class="w-full  text-neutral-500 border rounded p-2"
-                  placeholder="Return Date" placeholder="Return Date" />
-              </div>
-            </div>
-            <div>
-              <input name="stops" type="number" class="w-full border rounded p-2" placeholder="Stapes" />
-            </div>
-            <div class="flex flex-col sm:flex-row gap-2">
-              <div class="flex-1">
-                <input name="original" type="text" class="w-full border rounded p-2" placeholder="Regular Price" />
-              </div>
-              <div class="flex-1">
-                <input name="current" type="text" class="w-full border rounded p-2" placeholder="Discount Price" />
-              </div>
-            </div>
-            <div class="text-sm text-gray-600 space-y-1">
+
+            <!-- Flight Info -->
+            <div class="text-xs sm:text-sm text-gray-600 space-y-1">
               <div class="flex justify-between">
-                <div class="">
+                <div>
                   <div>Flight Time</div>
                   <div>Steps Time</div>
                   <div>Total Flight Time</div>
@@ -192,17 +189,24 @@
                 </div>
               </div>
             </div>
-            <div class="flex flex-col sm:flex-row justify-between gap-2 pt-4">
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-between gap-3 pt-4">
               <button id="cancelBtn" type="button" onclick="document.getElementById('modal').classList.add('hidden')"
-                class="flex-1 bg-gray-800 text-white rounded px-4 py-2 hover:bg-black transition">Cancel</button>
+                class="flex-1 bg-gray-800 text-white rounded px-4 py-2.5 hover:bg-black transition">
+                Cancel
+              </button>
               <button type="submit"
-                class="flex-1 bg-green-600 text-white rounded px-4 py-2 hover:bg-blue-700 transition">Add
-                Ticket</button>
+                class="flex-1 bg-green-600 text-white rounded px-4 py-2.5 hover:bg-blue-700 transition">
+                Add Ticket
+              </button>
             </div>
+
           </form>
         </div>
       </div>
     </div>
+
     <script src="/src/script/db.js"></script>
     <script src="/src/script/filter.js"></script>
     <script src="/src/script/newDb.js"></script>
