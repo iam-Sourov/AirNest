@@ -427,21 +427,21 @@
     },
     {
       "id": "19",
-      "airline": "AirIndia",
+      "airline": "Air India",
       "type": "International",
       "route": {
         "from": {
           "city": "Mumbai",
-          "code": "MUM"
+          "code": "BOM"
         },
         "to": {
-          "city": "Kashmir",
-          "code": "KAS"
+          "city": "Srinagar",
+          "code": "SXR"
         }
       },
-      "departureTime": "2025-06-19",
-      "arrivalTime": "",
-      "return": "2025-06-27",
+      "departureTime": "2025-06-19T00:00",
+      "arrivalTime": null,
+      "return": "2025-06-27T00:00",
       "stops": 2,
       "travelers": 1,
       "price": {
@@ -453,21 +453,22 @@
     {
       "id": "20",
       "airline": "Biman Bangladesh",
-      "type": "International",
+      "type": "Domestic",
       "route": {
         "from": {
           "city": "Dhaka",
-          "code": "DHA"
+          "code": "DAC"
         },
         "to": {
-          "city": "khulna",
-          "code": "KHU"
+          "city": "Khulna",
+          "code": "KHL"
         }
       },
-      "departureTime": "2025-06-14",
-      "arrivalTime": "",
-      "return": "2025-06-16",
+      "departureTime": "2025-06-14T00:00",
+      "arrivalTime": null,
+      "return": "2025-06-16T00:00",
       "stops": 1,
+      "travelers": 1,
       "price": {
         "current": 3200,
         "original": 5000,
@@ -475,4 +476,4 @@
       }
     }
   ]
-}
+} 

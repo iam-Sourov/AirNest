@@ -32,18 +32,17 @@
   </header>
   <!-- Hero -->
   <div class="container mx-auto">
-    <div class="grid md:grid-cols-2 gap-3 p-4 m5">
+    <div class=" grid md:grid-cols-2 gap-3 p-4 m5">
       <div class="z-10 space-y-10">
         <h1
-          class="leading-[100%] text-4xl md:text-7xl lg:text-[120px] font-rubik font-normal text-neutral-700 text-wrap">
+          class="leading-[100%] text-4xl md:text-7xl lg:text-[120px] font-rubik font-normal text-neutral-700 text-nowrap">
           Where Your Journey <br class=""> Takes Flight</h1>
         <p class=" w-full lg:w-[544px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
           Step into a world where every flight is the start of a story. Whether you’re chasing sunsets,
           exploring hidden towns, or reuniting with loved ones, let us help you find the perfect journey—
           full of wonder, comfort, and a touch of magic.</p>
         <form id="form"
-          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 sm:p-6 rounded-xl w-full max-w-xl md:max-w-[700px] mx-auto">
-
+          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 sm:p-6 rounded-xl w-fit max-w-xl md:max-w-[700px] mx-auto">
           <!-- From & To -->
           <div class="flex flex-col md:flex-row gap-3 sm:gap-4">
             <!-- From -->
@@ -86,7 +85,7 @@
             <!-- Return -->
             <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
               <label for="return"
-                class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
+                class="flex-1 gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
                 🔁 Return
               </label>
               <input type="datetime-local" id="return"
@@ -117,7 +116,7 @@
       <div class="hidden md:flex justify-center items-center">
         <div class="flex justify-center items-center">
           <img src="/src/assets/plane.png" alt="Plane" loading="lazy"
-            class="animate-flyin delay-500 duration-1000 max-w-full h-auto" />
+            class="animate-flyin delay-500 duration-1000 w-full h-auto" />
         </div>
       </div>
     </div>
