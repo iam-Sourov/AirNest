@@ -32,17 +32,17 @@
   </header>
   <!-- Hero -->
   <div class="container mx-auto">
-    <div class=" grid md:grid-cols-2 gap-3 p-4 m5">
+    <div class=" grid md:grid-cols-2 gap-3 p-4">
       <div class="z-10 space-y-10">
         <h1
           class="leading-[100%] text-4xl md:text-7xl lg:text-[120px] font-rubik font-normal text-neutral-700 text-nowrap">
           Where Your Journey <br class=""> Takes Flight</h1>
-        <p class=" w-full lg:w-[544px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
-          Step into a world where every flight is the start of a story. Whether you’re chasing sunsets,
+        <p class=" w-full lg:w-[640px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
+          Step into a world where every flight is the start of a story. Whether you're chasing sunsets,
           exploring hidden towns, or reuniting with loved ones, let us help you find the perfect journey—
           full of wonder, comfort, and a touch of magic.</p>
         <form id="form"
-          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 sm:p-6 rounded-xl w-fit max-w-xl md:max-w-[700px] mx-auto">
+          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 sm:p-6 rounded-xl  max-w-xl md:max-w-[700px] mx-auto">
           <!-- From & To -->
           <div class="flex flex-col md:flex-row gap-3 sm:gap-4">
             <!-- From -->
@@ -69,48 +69,15 @@
               </select>
             </div>
           </div>
-
-          <!-- Departure / Return / Travelers -->
-          <div class="flex flex-col md:flex-row gap-3 sm:gap-4">
-            <!-- Departure -->
-            <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="departure"
-                class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
-                📅 Departure
-              </label>
-              <input type="datetime-local" id="departure"
-                class="w-full p-2.5 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-            </div>
-
-            <!-- Return -->
-            <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="return"
-                class="flex-1 gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
-                🔁 Return
-              </label>
-              <input type="datetime-local" id="return"
-                class="w-full p-2.5 rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            </div>
-
-            <!-- Travelers -->
-            <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="traveler"
-                class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
-                👥 Travelers
-              </label>
-              <select id="traveler"
-                class="w-full font-medium bg-white rounded p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-                <option value="">Select</option>
-                <option value="1">1 Person</option>
-                <option value="2">2 People</option>
-                <option value="3">3 People</option>
-                <option value="4">4 People</option>
-              </select>
-            </div>
-          </div>
+          <button type="submit"
+            class="bg-green-600 text-white font-semibold rounded-full py-2 px-4 hover:bg-green-700 transition">
+            Search Flights
+          </button>
+          <button type="button" id="clear-btn"
+            class="bg-gray-300 text-gray-800 font-semibold rounded-full py-2 px-5 hover:bg-gray-400 transition">
+            Clear
+          </button>
         </form>
-
       </div>
       <!--Hero IMG -->
       <div class="hidden md:flex justify-center items-center">
@@ -206,8 +173,8 @@
       </div>
     </div>
 
-    <script src="script/db.js"></script>
     <script src="script/filter.js"></script>
+    <script src="script/db.js"></script>
     <script src="script/newDb.js"></script>
 </body>
 

@@ -3,40 +3,38 @@ let cardBody = document.getElementById('card');
 function fetchFlights() {
   const filterData = JSON.parse(localStorage.getItem("flights"));
 
-  if (!filterData) {
-    fetch(`https://air-nest.onrender.com/flights`)
-      .then(res => res.json())
-      .then(json => {
-        clearCards();
-
-        json.forEach(data => {
-          const savedIDs = JSON.parse(localStorage.getItem('ID')) || [];
-          if (savedIDs.includes(data.id)) {
-            const btn = document.getElementById(`add-btn-${data.id}`);
-            if (btn) {
-              btn.classList.remove('bg-neutral-900');
-              btn.classList.add('bg-green-600');
-              btn.textContent = 'Added';
-            }
-          }
-          cardBody.append(card(data));
-        });
-      });
-    return;
-  }
-
   fetch(`https://air-nest.onrender.com/flights`)
     .then(res => res.json())
     .then(json => {
       clearCards();
 
-      const filtered = json.filter(
-        f => f.route.from.code === filterData.from && f.route.to.code === filterData.to
-      );
-      localStorage.removeItem("flights");
+      let flightsToDisplay = json;
 
-      filtered.forEach(data => cardBody.append(card(data)));
-    });
+      if (filterData && filterData.from && filterData.to) {
+        flightsToDisplay = json.filter(
+          f => f.route.from.code === filterData.from && f.route.to.code === filterData.to
+        );
+      }
+
+      if (flightsToDisplay.length === 0) {
+        cardBody.innerHTML = `<p class="text-center text-gray-500 text-lg py-6">No flights found for your search.</p>`;
+        return;
+      }
+
+      flightsToDisplay.forEach(data => {
+        const savedIDs = JSON.parse(localStorage.getItem('ID')) || [];
+        if (savedIDs.includes(data.id)) {
+          const btn = document.getElementById(`add-btn-${data.id}`);
+          if (btn) {
+            btn.classList.remove('bg-neutral-900');
+            btn.classList.add('bg-green-600');
+            btn.textContent = 'Added';
+          }
+        }
+        cardBody.append(card(data));
+      });
+    })
+    .catch(err => console.error("Error fetching flights:", err));
 }
 
 function clearCards() {
