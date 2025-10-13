@@ -4,7 +4,7 @@ document.getElementById('m-form').addEventListener('submit', async function (e) 
     const form = e.target;
     const formData = new FormData(form);
 
-    const res = await fetch('http://localhost:3000/flights');
+    const res = await fetch('https://air-nest.onrender.com/flights');
     const flights = await res.json();
 
     const maxId = flights.reduce((max, flight) => Math.max(max, parseInt(flight.id)), 0);
@@ -35,7 +35,7 @@ document.getElementById('m-form').addEventListener('submit', async function (e) 
         }
     };
 
-    fetch('http://localhost:3000/flights', {
+    fetch('https://air-nest.onrender.com/flights', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'

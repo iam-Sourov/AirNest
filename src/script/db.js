@@ -4,7 +4,7 @@ function fetchFlights() {
   const filterData = JSON.parse(localStorage.getItem("flights"));
 
   if (!filterData) {
-    fetch(`http://localhost:3000/flights`)
+    fetch(`https://air-nest.onrender.com/flights`)
       .then(res => res.json())
       .then(json => {
         clearCards();
@@ -25,7 +25,7 @@ function fetchFlights() {
     return;
   }
 
-  fetch(`http://localhost:3000/flights`)
+  fetch(`https://air-nest.onrender.com/flights`)
     .then(res => res.json())
     .then(json => {
       clearCards();

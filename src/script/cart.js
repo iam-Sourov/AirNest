@@ -1,7 +1,7 @@
 const cartId = localStorage.getItem('ID') || [];
 
 let cardBody = document.getElementById('cartID');
-fetch("http://localhost:3000/flights")
+fetch("https://air-nest.onrender.com/flights")
     .then(res => res.json())
     .then(json => {
         json.map(data => {

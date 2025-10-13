@@ -17,7 +17,7 @@ filterForm.addEventListener('change', function (e) {
 
 
 async function loadCities() {
-    const res = await fetch("http://localhost:3000/flights");
+    const res = await fetch("https://air-nest.onrender.com/flights");
     const flights = await res.json();
 
     const citySet = new Map();
@@ -44,7 +44,7 @@ async function loadCities() {
         to.value = code;
         to.textContent = city;
         cityFrom.appendChild(from);
-        cityTo.appendChild (to);
+        cityTo.appendChild(to);
     });
 }
 loadCities()
