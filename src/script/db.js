@@ -33,7 +33,6 @@ function fetchFlights() {
       const filtered = json.filter(
         f => f.route.from.code === filterData.from && f.route.to.code === filterData.to
       );
-      // ✅ clear filter after applying once
       localStorage.removeItem("flights");
 
       filtered.forEach(data => cardBody.append(card(data)));
