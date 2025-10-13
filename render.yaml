@@ -1,0 +1,10 @@
+services:   
+  - type: web     
+    name: airnest-app    
+    env: node     
+    repo: https://github.com/iam-Sourov/AirNest     
+    branch: main     
+    buildCommand: npm install    
+    startCommand: npm start    
+    autoDeploy: true     
+    rootDir: .
