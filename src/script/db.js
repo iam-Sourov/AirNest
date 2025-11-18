@@ -7,22 +7,34 @@ function fetchFlights() {
     .then(res => res.json())
     .then(json => {
       clearCards();
-
       let flightsToDisplay = json;
 
-      if (filterData && filterData.from && filterData.to) {
-        flightsToDisplay = json.filter(
-          f => f.route.from.code === filterData.from && f.route.to.code === filterData.to
-        );
+      if (filterData) {
+        const { from, to, travelers } = filterData;
+        const travelerCount = parseInt(travelers) || 1;
+
+        flightsToDisplay = json.filter(f => {
+          const matchFrom = from ? f.route.from.code === from : true;
+          const matchTo = to ? f.route.to.code === to : true;
+
+          const matchTravelers = f.availableSeats
+            ? f.availableSeats >= travelerCount
+            : true;
+          return matchFrom && matchTo && matchTravelers;
+        });
       }
 
       if (flightsToDisplay.length === 0) {
-        cardBody.innerHTML = `<p class="text-center text-gray-500 text-lg py-6">No flights found for your search.</p>`;
+        cardBody.innerHTML = `
+          <p class="text-center text-gray-500 text-lg py-6">
+            No flights found for your search.
+          </p>`;
         return;
       }
 
       flightsToDisplay.forEach(data => {
         const savedIDs = JSON.parse(localStorage.getItem('ID')) || [];
+
         if (savedIDs.includes(data.id)) {
           const btn = document.getElementById(`add-btn-${data.id}`);
           if (btn) {
@@ -51,6 +63,7 @@ function handleAddToCart(id) {
   if (index === -1) {
     idArr.push(id);
     localStorage.setItem('ID', JSON.stringify(idArr));
+
     if (btn) {
       btn.classList.remove('bg-neutral-900');
       btn.classList.add('bg-green-600');
@@ -68,6 +81,7 @@ function card({ id, airline, type, route, price, stops, departureTime }) {
     <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4">
       <div class="flex flex-col md:flex-row justify-between border-2 border-neutral-400 border-dashed rounded-2xl p-6 sm:p-8 md:p-10 gap-4 sm:gap-6">
         <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-3 sm:gap-4 md:gap-6 w-full">
+        
           <div class="flex items-center gap-2 sm:gap-3">
             <div class="font-semibold text-base sm:text-lg md:text-2xl">${airline}</div>
             <div class="text-xs sm:text-sm text-neutral-600 px-2 py-0.5 bg-neutral-100 rounded-full">${type}</div>
@@ -87,6 +101,7 @@ function card({ id, airline, type, route, price, stops, departureTime }) {
             <div class="text-sm sm:text-base md:text-lg font-bold">${route.to.city}</div>
             <div class="text-xs sm:text-sm text-gray-500">${route.to.code}</div>
           </div>
+
         </div>
       </div>
       <div class="border-2 border-dashed border-neutral-400 rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col justify-center">

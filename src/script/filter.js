@@ -5,11 +5,8 @@ filterForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const from = document.getElementById('from').value;
     const to = document.getElementById('to').value;
-    const travelers = document.getElementById('traveler').value;
-
-    const filterData = { from, to, travelers };
+    const filterData = { from, to };
     localStorage.setItem("flights", JSON.stringify(filterData));
-
     console.log("Filter applied:", filterData);
     fetchFlights();
 });
@@ -60,5 +57,4 @@ async function loadCities() {
         console.error("Error loading cities:", error);
     }
 }
-
 loadCities();
