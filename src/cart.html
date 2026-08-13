@@ -4,23 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
     <link href="./output.css" rel="stylesheet">
-    <title>Cart</title>
+    <title>AirNest - Cart & Checkout</title>
 </head>
 
-<body>
-    <div class="container mx-auto">
-        <div class="flex items-center gap-2 text-neutral-950 h-20 mt-2.5">
-            <div class="font-rubik text-2xl font-normal leading-[100%]"><a href="index.html">Home</a></div>
-            <div class="font-rubik text-2xl font-normal leading-[100%]">></div>
-            <div class="font-rubik text-2xl font-normal leading-[100%]"> <a href="">Cart</a></div>
+<body class="bg-gray-50 min-h-screen font-inter text-neutral-800 antialiased">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-30 border-b border-gray-100 shadow-xs">
+        <nav class="container mx-auto flex flex-wrap justify-between items-center px-6 py-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-3xl font-normal text-neutral-950 tracking-tight font-rubik hover:text-green-600 transition">AirNest</a>
+                <span class="text-gray-300">/</span>
+                <span class="text-gray-600 font-semibold text-sm">Cart & Checkout</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-sm font-semibold text-neutral-700 hover:text-green-600 transition px-4 py-2 rounded-lg border border-gray-200 bg-white">
+                    ← Back to Flights
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto py-8 px-4 max-w-6xl">
+        <div id="cartID" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Dynamically populated cart cards -->
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal"
+        class="hidden fixed inset-0 flex bg-black/70 backdrop-blur-xs justify-center items-center z-50 transition-opacity duration-300 ease-in-out p-4">
+        <div class="w-full max-w-lg bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-neutral-950">Payment Details</h2>
+                    <p class="text-xs text-gray-500">Complete your booking securely</p>
+                </div>
+                <button onclick="closePaymentModal()"
+                    class="text-gray-400 hover:text-gray-700 text-2xl font-bold cursor-pointer">✕</button>
+            </div>
+
+            <form id="paymentForm" class="space-y-4">
+                <div>
+                    <label for="cardName" class="block text-xs font-semibold text-gray-600 mb-1">Cardholder Name</label>
+                    <input id="cardName" type="text" placeholder="John Doe"
+                        class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                        required>
+                </div>
+
+                <div>
+                    <label for="cardNumber" class="block text-xs font-semibold text-gray-600 mb-1">Card Number</label>
+                    <input id="cardNumber" type="text" placeholder="4532 •••• •••• 8892" maxlength="19"
+                        class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                        required>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-1">
+                        <label for="expiry" class="block text-xs font-semibold text-gray-600 mb-1">Expiry Date</label>
+                        <input id="expiry" type="text" placeholder="12/28" maxlength="5"
+                            class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            required>
+                    </div>
+                    <div class="flex-1">
+                        <label for="cvv" class="block text-xs font-semibold text-gray-600 mb-1">CVV / CVC</label>
+                        <input id="cvv" type="password" placeholder="•••" maxlength="4"
+                            class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                            required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="address" class="block text-xs font-semibold text-gray-600 mb-1">Billing Address</label>
+                    <input id="address" type="text" placeholder="House 12, Road 5, Gulshan, Dhaka"
+                        class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                        required>
+                </div>
+
+                <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                    <div>
+                        <span class="text-xs text-gray-500 block">Total Amount</span>
+                        <span id="modal-total-amount" class="text-xl font-extrabold text-green-600">BDT 0</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="closePaymentModal()"
+                            class="bg-gray-200 text-gray-800 font-semibold rounded-xl px-4 py-2.5 hover:bg-gray-300 transition text-sm cursor-pointer">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                            class="bg-green-600 text-white font-semibold rounded-xl px-6 py-2.5 hover:bg-green-700 transition text-sm cursor-pointer shadow-sm">
+                            Pay & Confirm
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="container mx-auto">
-        <div id="cartID" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 p-4">
-            
-        </div>
-    </div>
+
+    <script src="script/api.js"></script>
     <script src="script/cart.js"></script>
 </body>
 
