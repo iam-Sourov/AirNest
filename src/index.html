@@ -4,178 +4,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
   <link href="./output.css" rel="stylesheet">
-  <title>AirNest</title>
-
+  <title>AirNest - Where Your Journey Takes Flight</title>
 </head>
 
-<body class=" overflow-x-hidden overflow-y-auto
-  h-screen w-screen ">
+<body class="bg-gray-50 min-h-screen font-inter text-neutral-800 antialiased">
   <!-- Header -->
-  <header class=" container mx-auto">
-    <nav class=" w-full flex flex-wrap justify-between items-center px-6 py-5">
-      <a href="#" class="text-2xl font-normal text-neutral-950 leading-[100%] tracking-[-0.48px] font-rubik">AirNest</a>
-      <div class=" flex justify-center items-center space-x-4">
-        <button class=" font-semibold tracking-[-0.32px]"
+  <header class="bg-white/80 backdrop-blur-md sticky top-0 z-30 border-b border-gray-100 shadow-xs">
+    <nav class="container mx-auto flex flex-wrap justify-between items-center px-6 py-4">
+      <a href="index.html" class="text-3xl font-normal text-neutral-950 tracking-tight font-rubik hover:text-green-600 transition">AirNest</a>
+      <div class="flex justify-center items-center space-x-4">
+        <button class="font-semibold text-neutral-800 hover:text-green-600 transition tracking-tight cursor-pointer px-4 py-2 rounded-lg border border-gray-200 bg-white hover:border-gray-300"
           onclick="document.getElementById('modal').classList.remove('hidden')">
-          Add Ticket
+          + Add Ticket
         </button>
-        <a class="flex gap-2 items-center px-4 py-1 border-2 rounded-lg font-medium tracking-[-0.36px] shadow-2xs"
-          href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
-            fill="none">
+        <a class="flex gap-2 items-center px-4 py-2 border-2 border-neutral-900 rounded-xl font-semibold text-neutral-900 bg-white hover:bg-neutral-900 hover:text-white transition shadow-sm"
+          href="cart.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="none">
             <path
               d="M10.6666 13.3333V2.66667C10.6666 2.31304 10.5261 1.9739 10.2761 1.72386C10.026 1.47381 9.68687 1.33333 9.33325 1.33333H6.66658C6.31296 1.33333 5.97382 1.47381 5.72378 1.72386C5.47373 1.9739 5.33325 2.31304 5.33325 2.66667V13.3333M2.66659 4H13.3333C14.0696 4 14.6666 4.59695 14.6666 5.33333V12C14.6666 12.7364 14.0696 13.3333 13.3333 13.3333H2.66659C1.93021 13.3333 1.33325 12.7364 1.33325 12V5.33333C1.33325 4.59695 1.93021 4 2.66659 4Z"
-              stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg> Cart</a>
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Cart</span>
+          <span id="cart-count-badge" class="hidden bg-green-600 text-white text-xs font-extrabold px-2 py-0.5 rounded-full">0</span>
+        </a>
       </div>
     </nav>
   </header>
-  <!-- Hero -->
-  <div class="container mx-auto">
-    <div class=" grid md:grid-cols-2 gap-3 p-4">
-      <div class="z-10 space-y-10">
-        <h1
-          class="leading-[100%] text-4xl md:text-7xl lg:text-[120px] font-rubik font-normal text-neutral-700 text-nowrap">
-          Where Your Journey <br class=""> Takes Flight</h1>
-        <p class=" w-full lg:w-[640px] text-neutral-700 font-inter text-lg font-normal leading-[140%] ">
+
+  <!-- Hero Section -->
+  <main class="container mx-auto py-8">
+    <div class="grid md:grid-cols-2 gap-8 p-4 items-center">
+      <div class="space-y-6">
+        <h1 class="leading-none text-4xl md:text-6xl lg:text-7xl font-rubik font-normal text-neutral-800 tracking-tight">
+          Where Your Journey <br class="hidden sm:inline" /> Takes Flight
+        </h1>
+        <p class="w-full lg:w-[580px] text-neutral-600 font-inter text-base md:text-lg leading-relaxed">
           Step into a world where every flight is the start of a story. Whether you're chasing sunsets,
           exploring hidden towns, or reuniting with loved ones, let us help you find the perfect journey—
-          full of wonder, comfort, and a touch of magic.</p>
+          full of wonder, comfort, and a touch of magic.
+        </p>
         <form id="form"
-          class="flex flex-col gap-4 border-2 border-dashed border-neutral-400 p-4 sm:p-6 rounded-xl  max-w-xl md:max-w-[700px] mx-auto">
+          class="flex flex-col gap-4 border-2 border-dashed border-neutral-300 p-6 rounded-2xl bg-white max-w-xl shadow-xs hover:border-neutral-400 transition">
           <!-- From & To -->
-          <div class="flex flex-col md:flex-row gap-3 sm:gap-4">
+          <div class="flex flex-col md:flex-row gap-4">
             <!-- From -->
-            <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="from" class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
-                ✈️ From
+            <div class="flex-1 border border-neutral-200 p-3.5 rounded-xl bg-gray-50/50">
+              <label for="from" class="flex gap-2 items-center text-neutral-600 font-semibold mb-1.5 text-sm">
+                ✈️ Departure
               </label>
               <select id="from"
-                class="w-full font-medium bg-white rounded p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full font-medium bg-white border border-gray-300 rounded-lg p-2.5 text-sm text-neutral-800 focus:outline-none focus:ring-2 focus:ring-green-500"
                 required>
                 <option value="">Select departure</option>
               </select>
             </div>
 
             <!-- To -->
-            <div class="flex-1 border-2 border-dashed border-neutral-400 p-3 rounded-xl">
-              <label for="to" class="flex gap-2 items-center text-neutral-500 font-medium mb-1 text-sm sm:text-base">
-                🛬 To
+            <div class="flex-1 border border-neutral-200 p-3.5 rounded-xl bg-gray-50/50">
+              <label for="to" class="flex gap-2 items-center text-neutral-600 font-semibold mb-1.5 text-sm">
+                🛬 Destination
               </label>
               <select id="to"
-                class="w-full font-medium bg-white rounded p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="w-full font-medium bg-white border border-gray-300 rounded-lg p-2.5 text-sm text-neutral-800 focus:outline-none focus:ring-2 focus:ring-green-500"
                 required>
                 <option value="">Select destination</option>
               </select>
             </div>
           </div>
-          <button type="submit"
-            class="bg-green-600 text-white font-semibold rounded-full py-2 px-4 hover:bg-green-700 transition">
-            Search Flights
-          </button>
-          <button type="button" id="clear-btn"
-            class="bg-gray-300 text-gray-800 font-semibold rounded-full py-2 px-5 hover:bg-gray-400 transition">
-            Clear
-          </button>
+          <div class="flex gap-3">
+            <button type="submit"
+              class="flex-1 bg-green-600 text-white font-semibold rounded-xl py-3 px-6 hover:bg-green-700 transition shadow-sm cursor-pointer text-sm">
+              🔍 Search Flights
+            </button>
+            <button type="button" id="clear-btn"
+              class="bg-gray-200 text-gray-800 font-semibold rounded-xl py-3 px-5 hover:bg-gray-300 transition cursor-pointer text-sm">
+              Clear
+            </button>
+          </div>
         </form>
       </div>
-      <!--Hero IMG -->
+
+      <!-- Hero IMG -->
       <div class="hidden md:flex justify-center items-center">
-        <div class="flex justify-center items-center">
+        <div class="relative">
           <img src="./assets/plane.png" alt="Plane" loading="lazy"
-            class="animate-flyin delay-500 duration-1000 w-full h-auto" />
+            class="animate-flyin w-full max-w-lg h-auto drop-shadow-2xl" />
         </div>
       </div>
     </div>
+
     <!-- Flights Section -->
-    <div class="container mx-auto space-y-4 pb-10 px-4" id="card">
-      <h1 class="font-rubik text-neutral-950 text-2xl font-normal mb-4">Flights For You</h1>
-
-
-    </div>
-    <!-- Modal Section -->
-    <div id="modal"
-      class="hidden fixed inset-0 flex bg-black/70 justify-center items-center z-10 transition-opacity duration-300 ease-in-out p-4">
-
-      <!-- Modal Container -->
-      <div class="w-full max-w-sm sm:max-w-md md:max-w-lg">
-        <div class="border rounded-2xl bg-white p-4 sm:p-6">
-
-          <!-- Title -->
-          <h1 class="pb-4 text-lg sm:text-xl font-medium text-neutral-950">New Ticket</h1>
-
-          <!-- Form -->
-          <form id="m-form" class="space-y-4">
-
-            <!-- Airline Name -->
-            <input name="airline" type="text" class="w-full border rounded p-2.5" placeholder="Airline Name" />
-
-            <!-- Type -->
-            <select name="type" class="w-full text-neutral-500 border rounded p-2.5">
-              <option disabled selected>Airline Type</option>
-              <option>International</option>
-              <option>Business</option>
-              <option>Domestic</option>
-              <option>Economic</option>
-            </select>
-
-            <!-- From / To -->
-            <div class="flex flex-col sm:flex-row gap-3">
-              <input name="from" type="text" class="flex-1 border rounded p-2.5" placeholder="From" />
-              <input name="to" type="text" class="flex-1 border rounded p-2.5" placeholder="To" />
-            </div>
-
-            <!-- Departure / Return -->
-            <div class="flex flex-col sm:flex-row gap-3">
-              <input name="departureTime" type="date" class="flex-1 text-neutral-500 border rounded p-2.5" />
-              <input name="return" type="date" class="flex-1 text-neutral-500 border rounded p-2.5" />
-            </div>
-
-            <!-- Stops -->
-            <input name="stops" type="number" class="w-full border rounded p-2.5" placeholder="Stops" />
-
-            <!-- Prices -->
-            <div class="flex flex-col sm:flex-row gap-3">
-              <input name="original" type="text" class="flex-1 border rounded p-2.5" placeholder="Regular Price" />
-              <input name="current" type="text" class="flex-1 border rounded p-2.5" placeholder="Discount Price" />
-            </div>
-
-            <!-- Flight Info -->
-            <div class="text-xs sm:text-sm text-gray-600 space-y-1">
-              <div class="flex justify-between">
-                <div>
-                  <div>Flight Time</div>
-                  <div>Steps Time</div>
-                  <div>Total Flight Time</div>
-                </div>
-                <div>
-                  <div>-----</div>
-                  <div>----</div>
-                  <div>-----</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row justify-between gap-3 pt-4">
-              <button id="cancelBtn" type="button" onclick="document.getElementById('modal').classList.add('hidden')"
-                class="flex-1 bg-gray-800 text-white rounded px-4 py-2.5 hover:bg-black transition">
-                Cancel
-              </button>
-              <button type="submit"
-                class="flex-1 bg-green-600 text-white rounded px-4 py-2.5 hover:bg-blue-700 transition">
-                Add Ticket
-              </button>
-            </div>
-
-          </form>
-        </div>
+    <div class="space-y-4 pt-10 pb-16 px-4" id="card">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-rubik text-neutral-900 text-3xl font-normal">Flights For You</h2>
+        <span class="text-xs text-gray-500 font-medium">Real-time availability from AirNest Backend</span>
       </div>
     </div>
+  </main>
 
-    <script src="script/filter.js"></script>
-    <script src="script/db.js"></script>
-    <script src="script/newDb.js"></script>
+  <!-- New Ticket Modal Section -->
+  <div id="modal"
+    class="hidden fixed inset-0 flex bg-black/70 backdrop-blur-xs justify-center items-center z-50 transition-opacity duration-300 ease-in-out p-4">
+
+    <!-- Modal Container -->
+    <div class="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-gray-100 max-h-[90vh] overflow-y-auto">
+
+      <!-- Title & Close -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold text-neutral-950">Add New Flight Ticket</h2>
+        <button onclick="document.getElementById('modal').classList.add('hidden')"
+          class="text-gray-400 hover:text-gray-700 text-2xl font-bold cursor-pointer">✕</button>
+      </div>
+
+      <!-- Form -->
+      <form id="m-form" class="space-y-4">
+
+        <!-- Airline Name -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Airline Name</label>
+          <input name="airline" type="text" required class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="e.g. Emirates, US-Bangla" />
+        </div>
+
+        <!-- Type -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Flight Type</label>
+          <select name="type" required class="w-full text-neutral-800 border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none">
+            <option value="Domestic">Domestic</option>
+            <option value="International">International</option>
+            <option value="Business">Business</option>
+            <option value="Economic">Economic</option>
+          </select>
+        </div>
+
+        <!-- From / To -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">From City</label>
+            <input name="from" type="text" required class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="e.g. Dhaka" />
+          </div>
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">To City</label>
+            <input name="to" type="text" required class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="e.g. Chittagong" />
+          </div>
+        </div>
+
+        <!-- Departure / Return -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">Departure Date</label>
+            <input name="departureTime" type="datetime-local" required class="w-full text-neutral-700 border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" />
+          </div>
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">Return Date</label>
+            <input name="return" type="date" class="w-full text-neutral-700 border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" />
+          </div>
+        </div>
+
+        <!-- Stops -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">Stops</label>
+          <input name="stops" type="number" min="0" value="0" required class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="0 for non-stop" />
+        </div>
+
+        <!-- Prices -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">Regular Price (BDT)</label>
+            <input name="original" type="number" required class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="4000" />
+          </div>
+          <div class="flex-1">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">Discount Price (BDT)</label>
+            <input name="current" type="number" required class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="3500" />
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-3 pt-4 border-t border-gray-100">
+          <button id="cancelBtn" type="button" onclick="document.getElementById('modal').classList.add('hidden')"
+            class="flex-1 bg-gray-200 text-gray-800 font-semibold rounded-xl px-4 py-3 hover:bg-gray-300 transition text-sm cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit"
+            class="flex-1 bg-green-600 text-white font-semibold rounded-xl px-4 py-3 hover:bg-green-700 transition text-sm cursor-pointer shadow-sm">
+            Add Ticket
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="script/api.js"></script>
+  <script src="script/filter.js"></script>
+  <script src="script/db.js"></script>
+  <script src="script/newDb.js"></script>
 </body>
 
 </html>
