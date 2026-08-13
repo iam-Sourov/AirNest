@@ -1,138 +1,204 @@
-const cartId = localStorage.getItem('ID') || [];
-
 let cardBody = document.getElementById('cartID');
-fetch("https://air-nest.onrender.com/flights")
-    .then(res => res.json())
-    .then(json => {
-        json.map(data => {
-            const id = data.id;
-            if (cartId.includes(String(id))) {
-                cardBody.append(card(data));
-            }
-        })
-    })
+let selectedTicketId = null;
 
-function handleRemoveFromCart(id) {
-    const idArr = (JSON.parse(localStorage.getItem('ID')) || []).filter(cartId => cartId !== id);
-    localStorage.setItem('ID', JSON.stringify(idArr));
-    const card = document.getElementById(`card-${id}`);
-    if (card) card.remove();
+function getCartIds() {
+    try {
+        const raw = localStorage.getItem('ID');
+        return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+        return [];
+    }
 }
 
-// Flights section
+function loadCartFlights() {
+    if (!cardBody) return;
+    const cartIds = getCartIds();
+    const apiUrl = typeof getApiUrl === 'function' ? getApiUrl('/flights') : '/flights';
+
+    if (cartIds.length === 0) {
+        renderEmptyCart();
+        return;
+    }
+
+    fetch(apiUrl)
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+            return res.json();
+        })
+        .then(json => {
+            cardBody.innerHTML = '';
+            let matchedFlights = json.filter(data => cartIds.includes(String(data.id)));
+
+            if (matchedFlights.length === 0) {
+                renderEmptyCart();
+                return;
+            }
+
+            let totalPrice = 0;
+            matchedFlights.forEach(data => {
+                totalPrice += data.price ? (data.price.current || 0) : 0;
+                cardBody.append(card(data));
+            });
+
+            renderCartSummary(matchedFlights.length, totalPrice);
+        })
+        .catch(err => {
+            console.error("Error fetching cart flights:", err);
+            cardBody.innerHTML = `
+                <div class="col-span-full text-center text-red-500 py-10 bg-red-50 rounded-2xl border border-red-200">
+                    <p class="font-semibold text-lg">Unable to load cart flights from backend</p>
+                    <p class="text-sm text-red-600 mt-1">Please make sure the backend server is running on http://localhost:3000.</p>
+                </div>`;
+        });
+}
+
+function renderEmptyCart() {
+    if (!cardBody) return;
+    const summaryEl = document.getElementById('cart-summary-container');
+    if (summaryEl) summaryEl.remove();
+
+    cardBody.innerHTML = `
+        <div class="col-span-full text-center py-16 px-4 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-300">
+            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🛒</div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Your Cart is Empty</h2>
+            <p class="text-gray-500 max-w-md mx-auto mb-6">Looks like you haven't added any flight tickets to your cart yet. Explore available flights and start your journey!</p>
+            <a href="index.html" class="inline-flex items-center gap-2 bg-green-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-700 transition shadow-md">
+                <span>✈️ Search Flights</span>
+            </a>
+        </div>`;
+    if (typeof updateCartBadge === 'function') updateCartBadge();
+}
+
+function renderCartSummary(itemCount, totalPrice) {
+    let summaryEl = document.getElementById('cart-summary-container');
+    if (!summaryEl) {
+        summaryEl = document.createElement('div');
+        summaryEl.id = 'cart-summary-container';
+        summaryEl.className = 'col-span-full mb-6 p-6 bg-gradient-to-r from-neutral-900 to-neutral-800 text-white rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4 shadow-lg';
+        cardBody.parentNode.insertBefore(summaryEl, cardBody);
+    }
+    summaryEl.innerHTML = `
+        <div>
+            <h3 class="text-xl font-bold">Cart Summary</h3>
+            <p class="text-gray-300 text-sm">${itemCount} ticket${itemCount > 1 ? 's' : ''} ready for booking</p>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right">
+                <span class="text-xs text-gray-400 block uppercase tracking-wider">Total Price</span>
+                <span class="text-2xl font-extrabold text-green-400">BDT ${totalPrice.toLocaleString()}</span>
+            </div>
+            <button onclick="openPaymentModal(null, ${totalPrice})"
+                class="bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-xl transition shadow-md">
+                Checkout All
+            </button>
+        </div>`;
+}
+
+function handleRemoveFromCart(id) {
+    id = String(id);
+    const cartIds = getCartIds().filter(cartId => String(cartId) !== id);
+    localStorage.setItem('ID', JSON.stringify(cartIds));
+    const cardEl = document.getElementById(`card-${id}`);
+    if (cardEl) cardEl.remove();
+
+    if (typeof showToast === 'function') showToast('Ticket removed from cart', 'info');
+    if (typeof updateCartBadge === 'function') updateCartBadge();
+
+    if (cartIds.length === 0) {
+        renderEmptyCart();
+    } else {
+        loadCartFlights();
+    }
+}
+
+function openPaymentModal(ticketId = null, amount = 0) {
+    selectedTicketId = ticketId;
+    const modal = document.getElementById('paymentModal');
+    const amountEl = document.getElementById('modal-total-amount');
+    if (amountEl) {
+        amountEl.textContent = `BDT ${amount.toLocaleString()}`;
+    }
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    if (modal) modal.classList.add('hidden');
+}
+
 function card({ id, airline, type, route, price, stops }) {
     let innerCard = document.createElement('div');
     innerCard.id = `card-${id}`;
-    innerCard.innerHTML = `<div class="flex flex-col">
-                <div class="flex flex-col border-2 border-dashed rounded-2xl p-6 space-y-6">
-                    <div class="flex flex-col items-center sm:flex-row sm:justify-center sm:gap-4 gap-2">
-                        <div class="font-semibold text-xl sm:text-2xl text-center sm:text-left">${airline}</div>
-                        <div class="text-xs sm:text-sm text-neutral-600 px-2 py-0.5 bg-neutral-100 rounded-full">${type}
-                        </div>
+    innerCard.className = "w-full";
+    innerCard.innerHTML = `
+        <div class="flex flex-col bg-white border-2 border-dashed border-neutral-300 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+            <div class="p-6 space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-xl text-neutral-900">${airline}</span>
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-neutral-100 text-neutral-700 rounded-full">${type}</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-y border-neutral-100">
+                    <div class="text-left">
+                        <div class="text-lg font-extrabold text-neutral-900">${route.from.city}</div>
+                        <div class="text-xs font-semibold text-gray-500">${route.from.code}</div>
                     </div>
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                        <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
-                            <div class="text-base sm:text-lg font-bold">${route.from.city}</div>
-                            <div class="text-sm text-gray-500">${route.from.code}</div>
-                        </div>
-                        <div class="flex flex-col items-center w-full max-w-xs">
-                            <div class="text-xs sm:text-sm text-gray-500">${stops} Stops</div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 6" class="w-full h-auto">
-                                <path d="M0 3L5..." fill="#808080" />
-                            </svg>
-                            <div class="text-xs sm:text-sm text-gray-500">----</div>
-                        </div>
-                        <div class="flex flex-col items-center sm:items-end text-center sm:text-right">
-                            <div class="text-base sm:text-lg font-bold">${route.to.city}</div>
-                            <div class="text-sm text-gray-500">${route.to.code}</div>
-                        </div>
+                    <div class="flex flex-col items-center px-4">
+                        <div class="text-xs text-gray-500 font-medium">${stops} stop(s)</div>
+                        <div class="w-16 border-t-2 border-dashed border-gray-400 my-1"></div>
+                        <div class="text-xs text-gray-400">✈</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-lg font-extrabold text-neutral-900">${route.to.city}</div>
+                        <div class="text-xs font-semibold text-gray-500">${route.to.code}</div>
                     </div>
                 </div>
-                <div class="flex flex-col border-2 border-dashed rounded-2xl p-6 gap-5 mt-4">
-                    <div class="flex justify-between text-base sm:text-lg font-bold">
-                        <div class="text-neutral-900">Ticket Price</div>
-                        <div class="text-neutral-900">${price.current}</div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="handleRemoveFromCart(${id})"
-                            class="w-full sm:flex-1 px-5 py-3 border border-dashed border-[#FF4D4D] text-sm sm:text-lg font-semibold text-red-500 rounded">
-                            Cancel Ticket
-                        </button>
-                        <button onclick="document.getElementById('paymentModal').classList.remove('hidden')"
-                            class="w-full sm:flex-1 px-5 py-3 bg-black text-white text-sm sm:text-lg font-medium rounded">
-                            Confirm Ticket
-                        </button>
-                    </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500 font-medium text-sm">Price</span>
+                    <span class="text-xl font-bold text-green-600">${price.currency || 'BDT'} ${(price.current || 0).toLocaleString()}</span>
                 </div>
             </div>
-            <div id="paymentModal"
-                class="hidden fixed inset-0 flex bg-black/70 justify-center items-center z-20 transition-opacity duration-300 ease-in-out p-4">
-                <div class="w-full max-w-lg">
-                    <div class="border rounded-2xl bg-white p-6 shadow-xl">
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-lg sm:text-xl font-medium text-neutral-950">Payment Information</h2>
-                            <button onclick="document.getElementById('paymentModal').classList.add('hidden')"
-                                class="text-gray-500 hover:text-black text-xl">✕</button>
-                        </div>
-                        <form id="paymentForm" class="space-y-5">
-                            <div>
-                                <label for="cardName" class="block text-sm font-medium text-neutral-600 mb-1">Cardholder
-                                    Name</label>
-                                <input id="cardName" type="text" placeholder="Enter Your Name"
-                                    class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    required>
-                            </div>
-                            <div>
-                                <label for="cardNumber" class="block text-sm font-medium text-neutral-600 mb-1">Card
-                                    Number</label>
-                                <input id="cardNumber" type="text" placeholder="1234 **** **** ****" maxlength="19"
-                                    class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    required>
-                            </div>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <div class="flex-1">
-                                    <label for="expiry" class="block text-sm font-medium text-neutral-600 mb-1">Expiry
-                                        Date</label>
-                                    <input id="expiry" type="text" placeholder="MM/YY" maxlength="5"
-                                        class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        required>
-                                </div>
-                                <div class="flex-1">
-                                    <label for="cvv" class="block text-sm font-medium text-neutral-600 mb-1">CVV</label>
-                                    <input id="cvv" type="password" placeholder="123" maxlength="4"
-                                        class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        required>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="address" class="block text-sm font-medium text-neutral-600 mb-1">Billing
-                                    Address</label>
-                                <input id="address" type="text" placeholder="Enter Your Address Here"
-                                    class="w-full border rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    required>
-                            </div>
-                            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-5 border-t">
-                                <div class="text-base sm:text-lg font-medium text-neutral-700">
-                                    Total: <span class="text-green-600 font-semibold">${price.current}</span>
-                                </div>
-                                <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                                    <button type="button"
-                                        onclick="document.getElementById('paymentModal').classList.add('hidden')"
-                                        class="w-full sm:w-auto bg-gray-800 text-white rounded-lg px-5 py-2 hover:bg-black transition">
-                                        Cancel
-                                    </button>
-                                    <button type="submit"
-                                        class="w-full sm:w-auto bg-green-600 text-white rounded-lg px-6 py-2 hover:bg-green-700 transition">
-                                        Pay Now
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>`;
-    return innerCard
+            <div class="p-4 bg-gray-50 border-t border-dashed border-neutral-300 flex gap-3">
+                <button onclick="handleRemoveFromCart('${id}')"
+                    class="flex-1 px-4 py-2.5 border border-red-500 text-red-600 hover:bg-red-50 text-sm font-semibold rounded-xl transition">
+                    Remove
+                </button>
+                <button onclick="openPaymentModal('${id}', ${price.current || 0})"
+                    class="flex-1 px-4 py-2.5 bg-neutral-900 hover:bg-green-600 text-white text-sm font-semibold rounded-xl transition">
+                    Confirm Ticket
+                </button>
+            </div>
+        </div>`;
+    return innerCard;
 }
-if (cartId.length === 0) {
-    cartId.innerHTML = '<p class="text-center col-span-full text-gray-500">Your cart is empty.</p>';
-}
+
+// Payment Form Submit Handler
+document.addEventListener('DOMContentLoaded', () => {
+    loadCartFlights();
+
+    const paymentForm = document.getElementById('paymentForm');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (selectedTicketId) {
+                // Remove individual ticket
+                handleRemoveFromCart(selectedTicketId);
+            } else {
+                // Clear entire cart
+                localStorage.setItem('ID', '[]');
+                renderEmptyCart();
+            }
+
+            closePaymentModal();
+            paymentForm.reset();
+
+            if (typeof showToast === 'function') {
+                showToast('🎉 Payment Successful! Your flight tickets have been confirmed.');
+            } else {
+                alert('Payment Successful! Your flight tickets have been confirmed.');
+            }
+        });
+    }
+});

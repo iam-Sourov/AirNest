@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node server.js",
-    "dev": "concurrently \"tailwindcss -i ./src/input.css -o ./src/output.css --watch\"",
+    "dev": "concurrently \"node server.js\" \"tailwindcss -i ./src/input.css -o ./src/output.css --watch\"",
     "build": "tailwindcss -i ./src/input.css -o ./src/output.css --minify"
   },
   "dependencies": {
